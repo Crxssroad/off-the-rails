@@ -5,6 +5,10 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :role, presence: true, inclusion: { in: %w(member admin)}
 
+  def admin?
+    role == "admin"
+  end
+
 
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
