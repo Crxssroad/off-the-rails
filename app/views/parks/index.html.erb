@@ -3,7 +3,7 @@
 <ul>
   <% @parks.each do |park| %>
     <li>
-      <%= park.name %> <br>
+      <%= link_to park.name, park_path(park) %> <br>
       <%= park.description %>
     </li>
   <% end %>
