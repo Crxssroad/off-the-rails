@@ -25,7 +25,7 @@ const ParksIndexContainer = () => {
   const parkTiles = parks.map(park => {
     return (
       <li>
-        <p> {park.name} </p>
+        <a href={`/park/${park.id}`}> {park.name} </a>
         <p> {park.description} </p>
       </li>
     )
