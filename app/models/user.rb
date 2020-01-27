@@ -8,8 +8,7 @@ class User < ApplicationRecord
   def admin?
     role == "admin"
   end
-
-
+  
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 end
