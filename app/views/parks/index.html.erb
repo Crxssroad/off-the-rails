@@ -1,1 +1,10 @@
 <h1>Welcome to the Park's index</h1>
+
+<ul>
+  <% @parks.each do |park| %>
+    <li>
+      <%= park.name %> <br>
+      <%= park.description %>
+    </li>
+  <% end %>
+</ul>
