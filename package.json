@@ -1,6 +1,10 @@
 {
   "name": "off-the-rails",
   "private": true,
+  "engines": {
+    "node": ">=6.0.0",
+    "yarn": ">=0.25.2"
+  },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "prop-types": "~15.6.0",
