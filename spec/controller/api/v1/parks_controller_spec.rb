@@ -19,8 +19,4 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(returned_json[0]["description"]).to eq("Happiest place on Earth!")
     end
   end
-
-  describe "GET#show" do
-    
-  end
 end

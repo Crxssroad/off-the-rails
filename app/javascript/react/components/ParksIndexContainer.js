@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import ParkTile from './ParkTile'
 
 const ParksIndexContainer = () => {
   const [parks, setParks] = useState([])
@@ -23,7 +24,12 @@ const ParksIndexContainer = () => {
   const parkTiles = parks.map(park => {
     let id = park.id
     return (
-      <Link to={`/park/${id}`} key={park.id}>{park.name}</Link>
+      <ParkTile
+        key={park.id}
+        id={park.id}
+        name={park.name}
+        description={park.description}
+      />
     )
   })
 
