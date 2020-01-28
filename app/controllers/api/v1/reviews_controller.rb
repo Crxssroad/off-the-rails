@@ -1,6 +1,6 @@
 class Api::V1::ReviewsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
-  
+
   def create
     review = Review.new(review_params)
 
@@ -13,6 +13,6 @@ class Api::V1::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:body).require(:review).permit(:title, :body, :rating)
+    params.require(:review).permit(:title, :body, :rating)
   end
 end

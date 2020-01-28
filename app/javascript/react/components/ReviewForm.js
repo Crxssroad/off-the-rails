@@ -35,12 +35,12 @@ const ReviewForm = props => {
     <form onSubmit={handleSubmit}>
       <label>
         Title
-        <input name="title" onChange={} value={review.title} />
+        <input name="title" onChange={handleInput} value={review.title} />
       </label>
 
       <label>
         Review
-        <input onChange={} value={review.body} />
+        <input onChange={handleInput} value={review.body} />
       </label>
 
       <input type="submit" value="Submit Review" />
