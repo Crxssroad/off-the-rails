@@ -22,7 +22,6 @@ const ParksIndexContainer = () => {
   }, [])
 
   const parkTiles = parks.map(park => {
-    let id = park.id
     return (
       <ParkTile
         key={park.id}
