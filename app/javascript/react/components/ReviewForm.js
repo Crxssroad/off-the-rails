@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 
+import ErrorList from './ErrorList'
+
 const ReviewForm = props => {
   const [review, setReview] = useState({
     title: "",
     body: "",
     rating: null
   })
+  const [errors, setErrors] = useState([])
 
   const handleInput = event => {
     setReview({
@@ -27,24 +30,36 @@ const ReviewForm = props => {
         }
       })
       .then(parsedBody => {
-
+        if (false) {
+          // if succesful pass review to parent component and clear form
+          setErrors([])
+        } else {
+          setErrors(parsedBody)
+        }
       })
       .catch(error => console.error(`Error in fetch ${error.message}`))
   }
+  let errorList
+  if (errors.length > 0) {
+    errorList = <ErrorList errors={errors} />
+  }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title
-        <input name="title" onChange={handleInput} value={review.title} />
-      </label>
+    <div>
+      errorList
+      <form onSubmit={handleSubmit}>
+        <label>
+          Title
+          <input name="title" onChange={handleInput} value={review.title} />
+        </label>
 
-      <label>
-        Review
-        <input onChange={handleInput} value={review.body} />
-      </label>
+        <label>
+          Review
+          <input onChange={handleInput} value={review.body} />
+        </label>
 
-      <input type="submit" value="Submit Review" />
-    </form>
+        <input type="submit" value="Submit Review" />
+        </form>
+    </div>
   )
 }
 
