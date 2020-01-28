@@ -1,7 +1,8 @@
 import React, { useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 
 const ParksIndexContainer = () => {
-  const [parks,setParks] = useState([])
+  const [parks, setParks] = useState([])
 
   useEffect(() =>{
     fetch("/api/v1/parks")
@@ -13,21 +14,16 @@ const ParksIndexContainer = () => {
       }
     })
     .then(validatedResponse => validatedResponse.json())
-    .then(body => {
-      console.log(body)
-      setParks(body.parks)
-    })
+    .then(body => setParks(body))
     .catch(error => {
       console.log(`Error fetching parks list ${error.message}`)
     })
   }, [])
 
   const parkTiles = parks.map(park => {
+    let id = park.id
     return (
-      <li>
-        <a href={`/park/${park.id}`}> {park.name} </a>
-        <p> {park.description} </p>
-      </li>
+      <Link to={`/park/${id}`} key={park.id}>{park.name}</Link>
     )
   })
 
