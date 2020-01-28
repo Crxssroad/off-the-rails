@@ -6,15 +6,12 @@ feature 'user registers', %Q{
   So that I can create an account
 } do
 
-  # Acceptance Criteria:
-  # * I must specify a valid email address,
-  #   password, and password confirmation
-  # * If I don't specify the required information, I am presented with
-  #   an error message
-
   scenario 'provide valid registration information' do
     visit new_user_registration_path
 
+    fill_in 'First Name', with: 'Gabe'
+    fill_in 'Last Name', with: 'Avacado'
+    fill_in 'Nickname', with: 'Cilantro'
     fill_in 'Email', with: 'john@example.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
