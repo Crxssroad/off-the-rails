@@ -3,11 +3,12 @@ import React, { useState } from 'react'
 import ErrorList from './ErrorList'
 
 const ReviewForm = props => {
-  const [review, setReview] = useState({
+  const emptyReview = {
     title: "",
     body: "",
     rating: null
-  })
+  }
+  const [review, setReview] = useState(emptyReview)
   const [errors, setErrors] = useState([])
 
   const handleInput = event => {
@@ -20,18 +21,24 @@ const ReviewForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    fetch("/api/v1/reviews", { method: "POST", body: JSON.stringify(review) })
+    fetch("/api/v1/reviews", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(review)
+    })
       .then(response => {
         if(response.ok){
-          response.json()
+          return response.json()
         } else {
           const error = new Error(`${response.status} ${response.statusText}`)
           throw(error)
         }
       })
       .then(parsedBody => {
-        if (false) {
-          // if succesful pass review to parent component and clear form
+        if (typeof parsedBody === "object") {
+          setReview(emptyReview)
           setErrors([])
         } else {
           setErrors(parsedBody)
@@ -40,12 +47,13 @@ const ReviewForm = props => {
       .catch(error => console.error(`Error in fetch ${error.message}`))
   }
   let errorList
+
   if (errors.length > 0) {
     errorList = <ErrorList errors={errors} />
   }
   return (
     <div>
-      errorList
+      {errorList}
       <form onSubmit={handleSubmit}>
         <label>
           Title
@@ -54,7 +62,7 @@ const ReviewForm = props => {
 
         <label>
           Review
-          <input onChange={handleInput} value={review.body} />
+          <textarea name="body" onChange={handleInput} value={review.body} />
         </label>
 
         <input type="submit" value="Submit Review" />
