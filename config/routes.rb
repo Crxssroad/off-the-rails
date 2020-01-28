@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'static_pages#index'
   devise_for :users
+
+  get '/parks', to: 'static_pages#index'
+
+  namespace :api do
+    namespace :v1 do
+      resources :parks, only: [:index]
+    end
+  end
 end
