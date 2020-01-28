@@ -5,7 +5,7 @@ const ParkTile = (props) => {
 
   return(
     <div>
-      <strong><Link to={`/parks/${props.id}`}>{props.name}</Link></strong>
+      <h4><Link to={`/parks/${props.id}`}>{props.name}</Link></h4>
       <p>{props.description}</p>
     </div>
   )

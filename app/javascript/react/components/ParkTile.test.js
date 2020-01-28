@@ -21,8 +21,8 @@ describe("ParkTile", () => {
       </BrowserRouter>
     )
   })
-  it("should render the name with the specific props", () => {
-    expect(wrapper.find("strong").text()).toBe("Six Flags")
+  it("should render an h4 element containing the name of the park", () => {
+    expect(wrapper.find("h4").text()).toBe("Six Flags")
   })
 
   it("should render paragraph tag with the park description", () => {
