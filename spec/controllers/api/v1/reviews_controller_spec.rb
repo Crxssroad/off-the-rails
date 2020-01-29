@@ -7,12 +7,13 @@ RSpec.describe Api::V1::ReviewsController do
       let!(:review1) { { review: { title: "This is awesome", body: "Because I said so.", rating: 5 } } }
 
       it "should persist in the database" do
-        expect(response.status).to eq(200)
-        expect(response.content_type).to eq("application/json")
-        
         previous_count = Review.count
         post :create, params: review1, format: :json
         next_count = Review.count
+
+        expect(response.status).to eq(200)
+        expect(response.content_type).to eq("application/json")
+
 
         expect(next_count).to be previous_count + 1
       end
