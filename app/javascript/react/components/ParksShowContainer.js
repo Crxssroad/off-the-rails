@@ -1,36 +1,42 @@
 import React, { useState, useEffect } from 'react'
 
 import ReviewForm from './ReviewForm'
+import ErrorList from './ErrorList'
+import ReviewListContainer from './ReviewListContainer'
 
-const ParksShowContainer = () => {
-  const [review, setReview] = useState([])
+
+const ParksShowContainer = (props) => {
+  const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
 
   useEffect(() => {
-    fetch('/api/v1/review')
+    let id = props.match.params.id
+    fetch(`/api/v1/parks/${id}/reviews/`)
     .then(response => {
       if(response.ok){
-        return response.json()
+        return response
       } else {
         const error = new Error(`${response.status} ${response.statusText}`)
         throw(error)
       }
     })
+    .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
-      setReview(parsedBody)
+      setReviews(parsedBody)
     })
-    .catch(error => console.error(`Error in fetch ${error.message}`))
+    .catch(error => {
+      console.error(`Error in fetch ${error.message}`)
+    })
     }, [])
 
-    const addNewReview = event => {
-      event.preventDefault();
-
-      fetch("/api/v1/reviews", {
+    const addNewReview = (formPayload) => {
+      let id = props.match.params.id
+      fetch(`/api/v1/parks/${id}/reviews/`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(review)
+        body: JSON.stringify(formPayload)
       })
         .then(response => {
           if(response.ok){
@@ -42,7 +48,10 @@ const ParksShowContainer = () => {
         })
         .then(parsedBody => {
           if (typeof parsedBody === "object") {
-            setReview(emptyReview)
+            setReviews([
+              ...reviews,
+              parsedBody
+            ])
             setErrors([])
           } else {
             setErrors(parsedBody)
@@ -57,8 +66,20 @@ const ParksShowContainer = () => {
       errorList = <ErrorList errors={errors} />
     }
 
+    const reviewList = reviews.map(review => {
+      return (
+        <ReviewListContainer
+          title={review.title}
+          body={review.body}
+          rating={review.rating}
+        />
+      )
+    })
+
   return(
     <div>
+      {reviewList}
+      {errorList}
       <ReviewForm
         addNewReview={addNewReview}
       />

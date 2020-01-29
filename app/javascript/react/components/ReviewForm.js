@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import ErrorList from './ErrorList'
-
 const ReviewForm = props => {
   const emptyReview = {
     title: "",
@@ -17,13 +15,22 @@ const ReviewForm = props => {
     })
   }
 
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    props.addNewReview(review)
+  }
+
   return (
     <div>
-      {errorList}
       <form onSubmit={handleSubmit}>
         <label>
           Title
           <input name="title" onChange={handleInput} value={review.title} />
+        </label>
+
+        <label>Rating
+          <input name="rating" onChange={handleInput} value={review.rating} />
         </label>
 
         <label>
