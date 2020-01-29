@@ -8,6 +8,7 @@ const ParkNewForm = (props) => {
   }
   const [park, setPark] = useState(defaultPark)
   const [errors, setErrors] = useState([])
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const handleInput = (event) => {
     setPark({
@@ -42,12 +43,16 @@ const ParkNewForm = (props) => {
     })
     .then(parsedBody => {
       if(typeof parsedBody === "object") {
-        return <Redirect to={`/parks/${parsedBody.id}`} />
+        setShouldRedirect(true)
       } else {
         setErrors(parsedBody)
       }
     })
     .catch(error => console.log(`Error posting park ${error.message}`))
+  }
+
+  if(shouldRedirect) {
+    return <Redirect to="/parks" />
   }
 
   return(
