@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/parks', to: 'static_pages#index'
   get '/parks/new', to: 'static_pages#index'
+  get '/api/v1/users/get_current_user'
 
   namespace :api do
     namespace :v1 do
