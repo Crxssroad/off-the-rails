@@ -7,6 +7,7 @@ class Api::V1::ParksController < ApplicationController
 
   def show
     render json: Park.find(params[:id])
+  end
 
   def create
     park = Park.new(park_params)
