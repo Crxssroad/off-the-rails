@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
-import ReviewListContainer from './ReviewListContainer'
+import ReviewTile from './ReviewTile'
 
 
 const ParksShowContainer = (props) => {
