@@ -8,7 +8,12 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe("ErrorList", () => {
   let wrapper
-  let customErrors = ["Name can't be blank", "I shouldn't have dropped out of college", "An array of errors"]
+  let customErrors = [
+    "Name can't be blank",
+    "I shouldn't have dropped out of college",
+    "An array of errors"
+  ]
+  
   beforeEach(() => {
     wrapper = mount(
       <ErrorList
