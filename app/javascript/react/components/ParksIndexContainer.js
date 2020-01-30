@@ -2,11 +2,15 @@ import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import ParkTile from './ParkTile'
 
-const ParksIndexContainer = () => {
+const ParksIndexContainer = (props) => {
   const [parks, setParks] = useState([])
 
   useEffect(() =>{
-    fetch("/api/v1/parks")
+    let path = "/api/v1/parks"
+    if (props.match.params.tag_id) {
+      path = `/api/v1/tags/${props.match.params.tag_id}/parks`
+    }
+    fetch(path)
     .then(response => {
       if(response.ok) {
         return response

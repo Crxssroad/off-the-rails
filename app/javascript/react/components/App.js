@@ -12,8 +12,8 @@ export const App = () => {
         <Route exact path="/" component={ParksIndexContainer}/>
         <Route exact path="/parks" component={ParksIndexContainer}/>
         <Route exact path="/tags" component={TagsIndexContainer}/>
-        <Route exact path="/tags/:tag_id/parks" component={ParksIndexContainer}/>
         <Route exact path="/parks/new" component={ParkNewContainer}/>
+        <Route exact path="/tags/:tag_id/parks" component={ParksIndexContainer}/>
       </Switch>
     </BrowserRouter>
 
