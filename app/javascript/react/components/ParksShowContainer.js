@@ -84,7 +84,7 @@ const ParksShowContainer = (props) => {
       <ParkDetailTile
         name={park.name}
         description={park.description}
-        />
+      />
       {reviewList}
       {errorList}
       <ReviewForm
