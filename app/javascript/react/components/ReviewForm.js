@@ -4,7 +4,7 @@ const ReviewForm = props => {
   const emptyReview = {
     title: "",
     body: "",
-    rating: null
+    rating: ""
   }
   const [review, setReview] = useState(emptyReview)
 
