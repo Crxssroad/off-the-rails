@@ -11,8 +11,8 @@ export const App = () => {
       <Switch>
         <Route exact path="/" component={ParksIndexContainer}/>
         <Route exact path="/parks" component={ParksIndexContainer}/>
-        <Route exact path="/parks/:id" component={ParksShowContainer}/>
         <Route exact path="/parks/new" component={ParkNewContainer}/>
+        <Route exact path="/parks/:id" component={ParksShowContainer}/>
       </Switch>
     </BrowserRouter>
   )
