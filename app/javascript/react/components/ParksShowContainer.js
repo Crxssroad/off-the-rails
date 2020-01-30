@@ -68,7 +68,8 @@ const ParksShowContainer = (props) => {
 
     const reviewList = reviews.map(review => {
       return (
-        <ReviewListContainer
+        <ReviewTile
+          key={review.id}
           title={review.title}
           body={review.body}
           rating={review.rating}
