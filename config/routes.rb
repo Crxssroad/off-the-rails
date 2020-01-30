@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'static_pages#index'
   devise_for :users
 
-  get '/parks/', to: 'homes#index'
-  get '/parks/:id', to: 'homes#index'
-  get '/parks/:id/reviews/new', to: 'homes#index'
+  get '/parks', to: 'static_pages#index'
+  get '/parks/new', to: 'static_pages#index'
+  get '/parks/:id', to: 'static_pages#index'
+  get '/parks/:id/reviews/new', to: 'static_pages#index'
 
   namespace "api" do
     namespace "v1" do
