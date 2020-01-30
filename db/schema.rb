@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_01_30_143951) do
     t.integer "rating", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "park_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
