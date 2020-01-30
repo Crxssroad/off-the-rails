@@ -1,8 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-
 import ParkTile from './ParkTile'
-import ParksShowContainer from './ParksShowContainer'
 
 const ParksIndexContainer = () => {
   const [parks, setParks] = useState([])
