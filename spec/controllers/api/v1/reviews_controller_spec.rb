@@ -4,7 +4,20 @@ RSpec.describe Api::V1::ReviewsController do
 
   describe "POST#create" do
     context "Post of review was succesful" do
-      let!(:review1) { { review: { title: "This is awesome", body: "Because I said so.", rating: 5 } } }
+      let!(:park1) { Park.create(
+        name: "Disney",
+        description: "Happiest place on Earth!"
+      )}
+      let!(:review1) {
+        {
+          review: {
+            title: "This is awesome",
+            body: "Because I said so.",
+            rating: 5
+          },
+          park_id: park1.id
+        }
+      }
 
       it "should persist in the database" do
         previous_count = Review.count
@@ -13,7 +26,6 @@ RSpec.describe Api::V1::ReviewsController do
 
         expect(response.status).to eq(200)
         expect(response.content_type).to eq("application/json")
-
 
         expect(next_count).to be previous_count + 1
       end
@@ -29,7 +41,18 @@ RSpec.describe Api::V1::ReviewsController do
     end
 
     context "Post was unsuccesful" do
-      let!(:bad_review) { {review: { title: "This is awesome" }} }
+      let!(:park2) { Park.create(
+        name: "Universal",
+        description: "Second happiest place on Earth!"
+      )}
+      let!(:bad_review) {
+        {
+          review: {
+            title: "This is awesome"
+          },
+          park_id: park2.id
+        }
+      }
 
       it "doesn't save to the database" do
         previous_count = Review.count
