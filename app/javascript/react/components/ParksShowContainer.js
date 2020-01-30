@@ -47,7 +47,7 @@ const ParksShowContainer = (props) => {
           }
         })
         .then(parsedBody => {
-          if (typeof parsedBody === "object") {
+          if (typeof parsedBody === "object" && !Array.isArray(parsedBody)) {
             setReviews([
               ...reviews,
               parsedBody
