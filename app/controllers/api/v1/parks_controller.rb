@@ -6,7 +6,15 @@ class Api::V1::ParksController < ApplicationController
   end
 
   def show
-    render json: Park.find(params[:id])
+    park = Park.find(params[:id])
+    reviews = ActiveModelSerializers::SerializableResource.new(
+      park.reviews,
+      each_serializer: ReviewSerializer
+    )
+    render json: {
+      park: park,
+      reviews: reviews
+    }
   end
 
   def create
