@@ -19,13 +19,13 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(response.status).to eq(200)
       expect(response.content_type).to eq("application/json")
 
-      expect(returned_json.length).to eq(2)
+      expect(returned_json["parks"].length).to eq(2)
 
-      expect(returned_json[0]["name"]).to eq("Disney")
-      expect(returned_json[0]["description"]).to eq("Happiest place on Earth!")
+      expect(returned_json["parks"][0]["name"]).to eq("Disney")
+      expect(returned_json["parks"][0]["description"]).to eq("Happiest place on Earth!")
 
-      expect(returned_json[1]["name"]).to eq("Six Flags")
-      expect(returned_json[1]["description"]).to eq("Cool things happen!")
+      expect(returned_json["parks"][1]["name"]).to eq("Six Flags")
+      expect(returned_json["parks"][1]["description"]).to eq("Cool things happen!")
     end
   end
 

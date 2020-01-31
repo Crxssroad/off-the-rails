@@ -3,9 +3,15 @@ class Api::V1::ParksController < ApplicationController
 
   def index
     if params[:tag_id]
-      render json: Tag.find(params[:tag_id]).parks
+      tag = Tag.find(params[:tag_id])
+      render json: {
+        "parks" => tag.parks,
+        "tag" => tag
+      }
     else
-      render json: Park.all
+      render json: {
+        "parks" => Park.all
+      }
     end
   end
 
