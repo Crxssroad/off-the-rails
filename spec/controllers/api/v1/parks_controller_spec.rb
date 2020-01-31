@@ -29,6 +29,24 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     end
   end
 
+  describe "GET#show" do
+    let!(:park1) { Park.create(
+      name: "Disney",
+      description: "Happiest place on Earth!"
+    )}
+
+    it "should return a single park on the show page" do
+      get :show, params: { id: park1.id }
+
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json["park"]["name"]).to eq("Disney")
+      expect(returned_json["park"]["description"]).to eq("Happiest place on Earth!")
+    end
+  end
+
   describe "POST#create" do
     context "Post of park was succesful" do
       let!(:park1) { { park: {

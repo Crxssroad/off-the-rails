@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_01_30_172602) do
+=======
+ActiveRecord::Schema.define(version: 2020_01_30_143951) do
+>>>>>>> 51ea1ca7f3e27a91b35891b3ab330e07b375c877
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_01_30_172602) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "parks_tags", force: :cascade do |t|
     t.bigint "park_id", null: false
     t.bigint "tag_id", null: false
@@ -31,18 +36,24 @@ ActiveRecord::Schema.define(version: 2020_01_30_172602) do
     t.index ["tag_id"], name: "index_parks_tags_on_tag_id"
   end
 
+=======
+>>>>>>> 51ea1ca7f3e27a91b35891b3ab330e07b375c877
   create_table "reviews", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.integer "rating", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+    t.text "park_id", null: false
+>>>>>>> 51ea1ca7f3e27a91b35891b3ab330e07b375c877
   end
 
   create_table "users", force: :cascade do |t|
