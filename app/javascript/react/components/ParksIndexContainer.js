@@ -1,12 +1,17 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ParkTile from './ParkTile'
 
-const ParksIndexContainer = () => {
+const ParksIndexContainer = (props) => {
   const [parks, setParks] = useState([])
+  const [tag, setTag] = useState(null)
 
   useEffect(() =>{
-    fetch("/api/v1/parks")
+    let path = "/api/v1/parks"
+    if (props.match.params.tag_id) {
+      path = `/api/v1/tags/${props.match.params.tag_id}/parks`
+    }
+    fetch(path)
     .then(response => {
       if(response.ok) {
         return response
@@ -15,7 +20,10 @@ const ParksIndexContainer = () => {
       }
     })
     .then(validatedResponse => validatedResponse.json())
-    .then(body => setParks(body))
+    .then(body => {
+      setParks(body.parks)
+      setTag(body.tag)
+    })
     .catch(error => {
       console.log(`Error fetching parks list ${error.message}`)
     })
@@ -31,10 +39,10 @@ const ParksIndexContainer = () => {
       />
     )
   })
-
+  let pageHeader = tag ? `${tag.name} Parks` : "Parks Index"
   return(
     <div>
-      <h1>Parks Index</h1>
+      <h1>{pageHeader}</h1>
       <ul>{parkTiles}</ul>
     </div>
   )

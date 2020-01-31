@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react'
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
 import ReviewTile from './ReviewTile'
+import ParkDetailTile from './ParkDetailTile'
 
 const ParksShowContainer = (props) => {
+  const [park,setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
 
@@ -21,6 +23,10 @@ const ParksShowContainer = (props) => {
     })
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
+<<<<<<< HEAD
+=======
+      setPark(parsedBody.park)
+>>>>>>> 7bf93292761087db90b4eb1c797825ea4084a4e7
       setReviews(parsedBody.reviews)
     })
     .catch(error => {
@@ -81,6 +87,10 @@ const ParksShowContainer = (props) => {
 
   return(
     <div>
+      <ParkDetailTile
+        name={park.name}
+        description={park.description}
+      />
       {reviewList}
       {errorList}
       <ReviewForm
