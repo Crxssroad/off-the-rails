@@ -2,11 +2,23 @@ class Api::V1::ParksController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
-    render json: Park.all
+    if params[:tag_id]
+      tag = Tag.find(params[:tag_id])
+      render json: {
+        "parks" => tag.parks,
+        "tag" => tag
+      }
+    else
+      render json: {
+        "parks" => Park.all
+      }
+    end
   end
 
   def show
-    render json: Park.find(params[:id])
+    park = Park.find(params[:id])
+    reviews = park.reviews
+    render json: { park: park, reviews: reviews }
   end
 
   def create
