@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react'
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
 import ReviewTile from './ReviewTile'
+import ParkDetailTile from './ParkDetailTile'
 
 const ParksShowContainer = (props) => {
+  const [park,setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
 
   useEffect(() => {
     let id = props.match.params.id
-    fetch(`/api/v1/parks/${id}/reviews/`)
+    fetch(`/api/v1/parks/${id}`)
     .then(response => {
       if(response.ok){
         return response
@@ -21,7 +23,8 @@ const ParksShowContainer = (props) => {
     })
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
-      setReviews(parsedBody)
+      setPark(parsedBody.park)
+      setReview(parsedBody.reviews)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
@@ -78,6 +81,10 @@ const ParksShowContainer = (props) => {
 
   return(
     <div>
+      <ParkDetailTile
+        name={park.name}
+        description={park.description}
+      />
       {reviewList}
       {errorList}
       <ReviewForm
