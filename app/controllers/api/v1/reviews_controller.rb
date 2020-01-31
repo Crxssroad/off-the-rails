@@ -8,14 +8,17 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     park = Park.find(params[:park_id])
-    review = Review.new(review_params)
-    review.park = park
-    review.user = current_user
-
-    if review.save
-      render json: review
+    if user_signed_in?
+      review = Review.new(review_params)
+      review.park = park
+      review.user = current_user
+      if review.save
+        render json: review
+      else
+        render json: review.errors.full_messages
+      end
     else
-      render json: review.errors.full_messages
+      render json: false
     end
   end
 
