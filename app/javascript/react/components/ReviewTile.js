@@ -5,9 +5,9 @@ const ReviewTile = ({ title, body, rating, user }) => {
   return(
     <div>
       <h3>{title}</h3>
-      <span>{user.display_name}</span>
+      <span className="author">{user.display_name}</span>
       <p>{body}</p>
-      <span>{rating}</span>
+      <span className="rating">{rating}</span>
     </div>
   )
 }
