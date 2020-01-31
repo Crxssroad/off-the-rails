@@ -10,7 +10,7 @@ const ParksShowContainer = (props) => {
 
   useEffect(() => {
     let id = props.match.params.id
-    fetch(`/api/v1/parks/${id}/reviews/`)
+    fetch(`/api/v1/parks/${id}`)
     .then(response => {
       if(response.ok){
         return response
@@ -21,7 +21,7 @@ const ParksShowContainer = (props) => {
     })
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
-      setReviews(parsedBody)
+      setReviews(parsedBody.reviews)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
@@ -31,9 +31,11 @@ const ParksShowContainer = (props) => {
     const addNewReview = (formPayload) => {
       let id = props.match.params.id
       fetch(`/api/v1/parks/${id}/reviews/`, {
+        credentials: 'same-origin',
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(formPayload)
       })
@@ -71,6 +73,7 @@ const ParksShowContainer = (props) => {
           key={review.id}
           title={review.title}
           body={review.body}
+          user={review.user}
           rating={review.rating}
         />
       )
