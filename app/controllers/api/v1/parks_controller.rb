@@ -2,34 +2,33 @@ class Api::V1::ParksController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
+    is_admin = current_user && current_user.admin?
     if params[:tag_id]
       tag = Tag.find(params[:tag_id])
       render json: {
         "parks" => tag.parks,
-        "tag" => tag
+        "tag" => tag,
+        "admin" => is_admin
       }
     else
       render json: {
-        "parks" => Park.all
+        "parks" => Park.all,
+        "admin" => is_admin
       }
     end
   end
 
   def show
     park = Park.find(params[:id])
-<<<<<<< HEAD
-    reviews = ActiveModelSerializers::SerializableResource.new(
+    serialized = ActiveModelSerializers::SerializableResource.new(
       park.reviews,
       each_serializer: ReviewSerializer
     )
     render json: {
       park: park,
-      reviews: reviews
+      reviews: serialized,
+      user: current_user
     }
-=======
-    reviews = park.reviews
-    render json: { park: park, reviews: reviews }
->>>>>>> 7bf93292761087db90b4eb1c797825ea4084a4e7
   end
 
   def create

@@ -23,11 +23,9 @@ const ParksShowContainer = (props) => {
     })
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
-<<<<<<< HEAD
-=======
       setPark(parsedBody.park)
->>>>>>> 7bf93292761087db90b4eb1c797825ea4084a4e7
-      setReviews(parsedBody.reviews)
+      setReviews(parsedBody.reviews.reviews)
+      setUser(parsedBody.user)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
