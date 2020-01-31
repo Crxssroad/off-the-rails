@@ -4,6 +4,7 @@ import ParkTile from './ParkTile'
 
 const ParksIndexContainer = (props) => {
   const [parks, setParks] = useState([])
+  const [tag, setTag] = useState(null)
 
   useEffect(() =>{
     let path = "/api/v1/parks"
@@ -19,7 +20,10 @@ const ParksIndexContainer = (props) => {
       }
     })
     .then(validatedResponse => validatedResponse.json())
-    .then(body => setParks(body))
+    .then(body => {
+      setParks(body.parks)
+      setTag(body.tag)
+    })
     .catch(error => {
       console.log(`Error fetching parks list ${error.message}`)
     })
@@ -35,10 +39,10 @@ const ParksIndexContainer = (props) => {
       />
     )
   })
-
+  let pageHeader = tag ? `${tag.name} Parks` : "Parks Index"
   return(
     <div>
-      <h1>Parks Index</h1>
+      <h1>{pageHeader}</h1>
       <ul>{parkTiles}</ul>
     </div>
   )

@@ -24,7 +24,7 @@ const ParksShowContainer = (props) => {
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
       setPark(parsedBody.park)
-      setReview(parsedBody.reviews)
+      setReviews(parsedBody.reviews)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
