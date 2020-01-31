@@ -9,6 +9,7 @@ const ParksShowContainer = (props) => {
   const [park,setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     let id = props.match.params.id
@@ -55,7 +56,7 @@ const ParksShowContainer = (props) => {
           if (typeof parsedBody === "object" && !Array.isArray(parsedBody)) {
             setReviews([
               ...reviews,
-              parsedBody
+              parsedBody.review
             ])
             setErrors([])
           } else {
