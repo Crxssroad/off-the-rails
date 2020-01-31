@@ -17,13 +17,11 @@ const ParkNewForm = (props) => {
     })
   }
 
-  const errorList = () => {
-    return errors.map((error, index) => {
+  const errorList = errors.map((error, index) => {
       return(
         <li key={index}>{error}</li>
       )
     })
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -42,7 +40,7 @@ const ParkNewForm = (props) => {
       }
     })
     .then(parsedBody => {
-      if(typeof parsedBody === "object") {
+      if(typeof parsedBody === "object" && !Array.isArray(parsedBody)) {
         setShouldRedirect(true)
       } else {
         setErrors(parsedBody)
