@@ -6,13 +6,13 @@ import ReviewTile from './ReviewTile'
 import ParkDetailTile from './ParkDetailTile'
 
 const ParksShowContainer = (props) => {
-  const [park,setPark] = useState({})
+  const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
   const [signedInUser, setSignedInUser] = useState(null)
 
+  let id = props.match.params.id
   useEffect(() => {
-    let id = props.match.params.id
     fetch(`/api/v1/parks/${id}`)
     .then(response => {
       if(response.ok){
