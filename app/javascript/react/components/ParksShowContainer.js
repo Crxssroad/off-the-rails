@@ -75,11 +75,10 @@ const ParksShowContainer = (props) => {
     return (
       <ReviewTile
         key={review.id}
-        title={review.title}
-        body={review.body}
+        review={review}
         user={review.user}
         signedInUser={signedInUser}
-        rating={review.rating}
+        parkId={id}
       />
     )
   })
