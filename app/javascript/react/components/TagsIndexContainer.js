@@ -4,7 +4,7 @@ import TagTile from './TagTile'
 
 const TagsIndexContainer = () => {
   const [tags, setTags] = useState([])
-  
+
   useEffect(() => {
     fetch("/api/v1/tags")
     .then(response => {

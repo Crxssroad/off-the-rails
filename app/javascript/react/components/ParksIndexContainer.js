@@ -5,6 +5,7 @@ import ParkTile from './ParkTile'
 const ParksIndexContainer = (props) => {
   const [parks, setParks] = useState([])
   const [tag, setTag] = useState(null)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() =>{
     let path = "/api/v1/parks"
@@ -23,6 +24,7 @@ const ParksIndexContainer = (props) => {
     .then(body => {
       setParks(body.parks)
       setTag(body.tag)
+      setIsAdmin(body.admin)
     })
     .catch(error => {
       console.log(`Error fetching parks list ${error.message}`)
@@ -40,10 +42,12 @@ const ParksIndexContainer = (props) => {
     )
   })
   let pageHeader = tag ? `${tag.name} Parks` : "Parks Index"
+  let buttonDisplay = isAdmin ? <Link to="/parks/new">Add a New Park</Link> : null
   return(
     <div>
       <h1>{pageHeader}</h1>
       <ul>{parkTiles}</ul>
+      {buttonDisplay}
     </div>
   )
 }
