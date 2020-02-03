@@ -9,7 +9,7 @@ const ParksShowContainer = (props) => {
   const [park,setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
-  const [user, setUser] = useState(null)
+  const [signedInUser, setSignedInUser] = useState(null)
 
   useEffect(() => {
     let id = props.match.params.id
@@ -26,7 +26,7 @@ const ParksShowContainer = (props) => {
     .then(parsedBody => {
       setPark(parsedBody.park)
       setReviews(parsedBody.reviews.reviews)
-      setUser(parsedBody.user)
+      setSignedInUser(parsedBody.user)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
@@ -86,7 +86,7 @@ const ParksShowContainer = (props) => {
 
   let reviewForm
 
-  if(user) {
+  if(signedInUser) {
     reviewForm = <ReviewForm
       addNewReview={addNewReview}
     />
