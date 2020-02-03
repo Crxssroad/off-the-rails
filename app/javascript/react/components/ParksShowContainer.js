@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
@@ -89,7 +89,12 @@ const ParksShowContainer = (props) => {
     reviewForm = <ReviewForm
       addNewReview={addNewReview}
     />
-  }
+} else {
+  reviewForm =
+    <Fragment>
+      Please <a href="/users/sign_in">Sign In</a> or <a href="/users/sign_up">Sign Up</a> to leave a review.
+    </Fragment>
+}
 
   return(
     <div>
