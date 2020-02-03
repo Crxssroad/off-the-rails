@@ -14,6 +14,7 @@ describe("Review tile", () => {
       <ReviewTile
         title="This is a review"
         body="My experience was positive"
+        user={{display_name:"Bob"}}
         rating={4}
       />
     )
@@ -28,6 +29,10 @@ describe("Review tile", () => {
   })
 
   it('should include a rating', () => {
-    expect(wrapper.find("span").text()).toEqual("4")
+    expect(wrapper.find("span.rating").text()).toEqual("4")
+  })
+
+  it('should include an author name', () => {
+    expect(wrapper.find("span.author").text()).toEqual("Bob")
   })
 })

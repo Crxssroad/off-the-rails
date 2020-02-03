@@ -1,15 +1,17 @@
 import React from 'react'
 
-const ReviewTile = (props) => {
+const ReviewTile = ({ title, body, rating, user }) => {
+
 
   return(
     <div className="reviewTileContainer">
       <div className="reviewTitle">
-        <h3>{props.title}</h3>
-        <div className="specialClassforRating">Rating: {props.rating}/5</div>
+        <h3>{title}</h3>
+        <span className="author">Author: {user.display_name}</span>
+        <div className="specialClassforRating">Rating: {rating}/5</div>
       </div>
       <div className="reviewTileStyling">
-        <p>{props.body}</p>
+        <p>{body}</p>
       </div>
     </div>
   )

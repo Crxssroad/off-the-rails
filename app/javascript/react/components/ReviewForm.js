@@ -54,7 +54,7 @@ const ReviewForm = props => {
               />
           </label>
 
-          <input class="button" type="submit" value="Submit Review" />
+          <input className="button" type="submit" value="Submit Review" />
         </div>
       </form>
     </div>
