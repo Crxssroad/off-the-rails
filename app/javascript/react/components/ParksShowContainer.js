@@ -34,7 +34,6 @@ const ParksShowContainer = (props) => {
   }, [])
 
   const addNewReview = (formPayload) => {
-    let id = props.match.params.id
     fetch(`/api/v1/parks/${id}/reviews/`, {
       credentials: 'same-origin',
       method: "POST",
@@ -55,8 +54,8 @@ const ParksShowContainer = (props) => {
       .then(parsedBody => {
         if (typeof parsedBody === "object" && !Array.isArray(parsedBody)) {
           setReviews([
-            ...reviews,
-            parsedBody.review
+            parsedBody.review,
+            ...reviews
           ])
           setErrors([])
         } else {
