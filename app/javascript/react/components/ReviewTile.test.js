@@ -8,14 +8,12 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe("Review tile", () => {
   let wrapper
-
+  let review = {title:"This is a review", body:"My experience was positive", rating:"4"}
   beforeEach(() => {
     wrapper = mount(
       <ReviewTile
-        title="This is a review"
-        body="My experience was positive"
+        review={review}
         user={{display_name:"Bob"}}
-        rating={4}
       />
     )
   })
