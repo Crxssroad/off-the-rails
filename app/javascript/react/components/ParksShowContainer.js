@@ -79,6 +79,7 @@ const ParksShowContainer = (props) => {
         title={review.title}
         body={review.body}
         user={review.user}
+        signedInUser={signedInUser}
         rating={review.rating}
       />
     )
