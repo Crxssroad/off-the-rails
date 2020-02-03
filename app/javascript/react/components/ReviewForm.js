@@ -22,24 +22,41 @@ const ReviewForm = props => {
   }
 
   return (
-    <div>
+    <div className="reviewTileStyling reviewForm">
       <form onSubmit={handleSubmit}>
-        <label>
-          Title
-          <input name="title" onChange={handleInput} value={review.title} />
-        </label>
+        <div className="inputContainer">
+          <label>
+            Title
+            <input
+              name="title"
+              onChange={handleInput}
+              value={review.title}
+              placeholder="Title"
+              />
+          </label>
 
-        <label>Rating
-          <input name="rating" onChange={handleInput} value={review.rating} />
-        </label>
+          <label>Rating
+            <input
+              name="rating"
+              onChange={handleInput}
+              value={review.rating}
+              placeholder="Rating"
+              />
+          </label>
 
-        <label>
-          Review
-          <textarea name="body" onChange={handleInput} value={review.body} />
-        </label>
+          <label>
+            Review
+            <textarea
+              name="body"
+              onChange={handleInput}
+              value={review.body}
+              placeholder="Review"
+              />
+          </label>
 
-        <input type="submit" value="Submit Review" />
-        </form>
+          <input class="button" type="submit" value="Submit Review" />
+        </div>
+      </form>
     </div>
   )
 }

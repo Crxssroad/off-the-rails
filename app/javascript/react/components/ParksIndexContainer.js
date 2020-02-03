@@ -41,9 +41,8 @@ const ParksIndexContainer = (props) => {
   })
   let pageHeader = tag ? `${tag.name} Parks` : "Parks Index"
   return(
-    <div>
-      <h1>{pageHeader}</h1>
-      <ul>{parkTiles}</ul>
+    <div class="grid-container full parkTileImageContainer">
+    {parkTiles}
     </div>
   )
 }

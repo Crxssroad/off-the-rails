@@ -1,10 +1,18 @@
 import React from 'react'
 
 const ParkDetailTile = (props) => {
+  let image = 'https://images2.imgbox.com/7d/15/MhS0zZLD_o.jpg'
+
+
   return (
     <div>
-      <h2>{props.name}</h2>
-      <p>{props.description}</p>
+      <div className="card">
+        <img src={image}/>
+        <div className="showPageRibbon">
+          {props.name}
+        </div>
+      </div>
+      <p class="parkShowDescStyling"> {props.description}</p>
     </div>
   )
 }

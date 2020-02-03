@@ -80,7 +80,7 @@ const ParksShowContainer = (props) => {
     })
 
   return(
-    <div>
+    <div className="parksShowStyling">
       <ParkDetailTile
         name={park.name}
         description={park.description}
