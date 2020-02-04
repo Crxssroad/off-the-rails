@@ -101,6 +101,7 @@ const ParksShowContainer = (props) => {
       <ParkDetailTile
         name={park.name}
         description={park.description}
+        averageRating={park.average_rating}
       />
       {reviewList}
       {errorList}
