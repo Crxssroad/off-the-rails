@@ -3,7 +3,7 @@ import React, { useState, Fragment } from 'react'
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
 
-const ReviewTile = ({ review, user, signedInUser, parkId }) => {
+const ReviewTile = ({ review, user, signedInUser, parkId, setPark }) => {
   let { title, body, rating, id } = review
   const [tileReview, setTileReview] = useState(review)
   const [editClicked, setEditClicked] = useState(false)
@@ -37,6 +37,7 @@ const ReviewTile = ({ review, user, signedInUser, parkId }) => {
         setTileReview(parsedBody.review)
         setEditClicked(false)
         setErrors([])
+        setPark(parsedBody.review.park)
       } else {
         setErrors(parsedBody)
       }
@@ -61,6 +62,8 @@ const ReviewTile = ({ review, user, signedInUser, parkId }) => {
       }
     })
     .then(parsedBody => {
+      debugger
+      setPark(parsedBody.park)
       setDeleted(true)
     })
     .catch(error => console.error(`Error in fetch ${error.message}`))
