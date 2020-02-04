@@ -3,7 +3,7 @@ import React, { useState, Fragment } from 'react'
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
 
-const ReviewTile = ({ review, user, signedInUser, parkId, setPark }) => {
+const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }) => {
   let { title, body, rating, id } = review
   const [tileReview, setTileReview] = useState(review)
   const [editClicked, setEditClicked] = useState(false)
@@ -83,7 +83,7 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark }) => {
       <div className="reviewTitle">
         <div className="reviewHeading">
           <h3>{tileReview.title}</h3><br/>
-          <span className="author">Author: {user.display_name}</span>
+          <span className="author">Author: {displayName}</span>
         </div>
         <span className="rating">Rating: {tileReview.rating}/5</span>
       </div>
