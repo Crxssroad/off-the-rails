@@ -5,8 +5,7 @@ import ParkNewForm from './ParkNewForm'
 const ParkNewContainer = (props) => {
 
   return(
-    <div>
-      <h2>Add A New Park</h2>
+    <div className="newFormCenterContainer">
       <ParkNewForm />
     </div>
   )
