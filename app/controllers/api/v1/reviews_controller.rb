@@ -40,9 +40,10 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     review = Review.find(params[:id])
+    park = review.park
     create_destroy_park_rating("destroy", review)
     review.destroy
-    render json: true
+    render json: park
   end
 
   private
@@ -60,7 +61,6 @@ class Api::V1::ReviewsController < ApplicationController
 
   def update_park_rating(past_rating, new_rating, park)
     rating_difference = (past_rating - new_rating).abs
-
     if past_rating < new_rating
       park.total_rating += rating_difference
     elsif past_rating > new_rating
