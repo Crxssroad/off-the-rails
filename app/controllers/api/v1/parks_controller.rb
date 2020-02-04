@@ -21,7 +21,7 @@ class Api::V1::ParksController < ApplicationController
   def show
     park = Park.find(params[:id])
     serialized = ActiveModelSerializers::SerializableResource.new(
-      park.reviews,
+      park.reviews.order('created_at DESC'),
       each_serializer: ReviewSerializer
     )
     render json: {

@@ -245,7 +245,7 @@ h2 {
   background-color:#5AD0E8;
   padding:5px 5px 5px 40px;
   display:grid;
-  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-columns: 50% 50%;
 }
 
 .specialClassforRating {
@@ -258,10 +258,9 @@ text-align:center;
   padding:10px 20px 10px 0;
 }
 
-.reviewListSection {
- h3 {
-   padding: 40px;
- }
+.reviewHeading {
+   line-height: .5;
+   padding-bottom: 10px;
 }
 
 .errorSpace {
@@ -293,4 +292,8 @@ text-align:center;
 .flash-notice {
   background-color: #5AD0E8;
   color: #000;
+}
+
+.reviewSectionHeading {
+  padding: 20px 40px 0 40px;
 }
