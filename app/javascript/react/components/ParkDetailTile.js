@@ -16,7 +16,7 @@ const ParkDetailTile = (props) => {
         <h3>
           Description
         </h3>
-        <p> {props.description}</p>
+        <p>{props.description}</p>
       </div>
     </div>
   )

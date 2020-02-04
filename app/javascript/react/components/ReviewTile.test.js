@@ -27,11 +27,11 @@ describe("Review tile", () => {
   })
 
   it('should include a rating', () => {
-    expect(wrapper.find("span.rating").text()).toEqual("4")
+    expect(wrapper.find("span.rating").text()).toEqual("Rating: 4/5")
   })
 
   it('should include an author name', () => {
-    expect(wrapper.find("span.author").text()).toEqual("Bob")
+    expect(wrapper.find("span.author").text()).toEqual("Author: Bob")
   })
 
   it('should not show edit or delete buttons for non authenticated users.', () => {

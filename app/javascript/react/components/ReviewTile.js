@@ -80,9 +80,9 @@ const ReviewTile = ({ review, user, signedInUser, parkId }) => {
       <div className="reviewTitle">
         <div className="reviewHeading">
           <h3>{tileReview.title}</h3><br/>
-          <span>Author: {user.display_name}</span>
+          <span className="author">Author: {user.display_name}</span>
         </div>
-        <span className="specialClassforRating">Rating: {tileReview.rating}/5</span>
+        <span className="rating">Rating: {tileReview.rating}/5</span>
       </div>
       <div className="reviewTileStyling">
         <p>{tileReview.body}</p>
