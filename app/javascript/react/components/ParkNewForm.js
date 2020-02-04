@@ -18,10 +18,10 @@ const ParkNewForm = (props) => {
   }
 
   const errorList = errors.map((error, index) => {
-      return(
-        <li key={index}>{error}</li>
-      )
-    })
+    return(
+      <li key={index}>{error}</li>
+    )
+  })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -54,31 +54,39 @@ const ParkNewForm = (props) => {
   }
 
   return(
-    <div>
-      <ul>
-        {errorList}
-      </ul>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            name="name"
-            onChange={handleInput}
-            value={park.name}
-          />
-        </label>
-        <label>
-          Description:
-          <input
-            name="description"
-            onChange={handleInput}
-            value={park.description}
-          />
-        </label>
-        <input type="submit" value="Add new park" />
+    <div className="grid align-center">
+      <div className="cell small-6 formContainer">
+        <ul>
+          {errorList}
+        </ul>
+        <form onSubmit={handleSubmit}>
+          <h2>Add A New Park</h2>
+          <div className="inputContainer">
+            <label>
+              Name <br />
+            <input
+              name="name"
+              onChange={handleInput}
+              value={park.name}
+              placeholder="Name"
+              />
+          </label>
+          <label>
+            Description <br />
+            <input
+              name="description"
+              onChange={handleInput}
+              value={park.description}
+              placeholder="Description"
+              />
+          </label>
+
+          <input className="button" type="submit" value="Add new park" />
+        </div>
       </form>
     </div>
-  )
+  </div>
+)
 }
 
 export default ParkNewForm

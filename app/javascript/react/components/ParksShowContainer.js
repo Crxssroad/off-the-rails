@@ -99,14 +99,21 @@ const ParksShowContainer = (props) => {
 
   return(
     <div>
-      <ParkDetailTile
-        name={park.name}
-        description={park.description}
-        averageRating={park.average_rating}
-      />
-      {reviewList}
-      {errorList}
-      {reviewForm}
+      <div className="parksShowStyling">
+        <ParkDetailTile
+          name={park.name}
+          description={park.description}
+          averageRating={park.average_rating}
+        />
+      </div>
+      <div className="parksShowStyling">
+        <div className="reviewSectionHeading">
+          <h3>Reviews</h3>
+          {reviewList}
+        </div>
+        {errorList}
+        {reviewForm}
+      </div>
     </div>
   )
 }

@@ -20,7 +20,7 @@ describe("Park Detail Tile", () => {
   })
 
   it('should have a name', () => {
-    expect(wrapper.find("h2").text()).toBe("Epcot")
+    expect(wrapper.find("div.showPageRibbon").text()).toBe("Epcot")
   })
 
   it('should have a description', () => {

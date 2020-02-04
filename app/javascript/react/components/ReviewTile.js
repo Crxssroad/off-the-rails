@@ -79,12 +79,18 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark }) => {
   }
 
   let display =
-    <div>
-      <h3>{tileReview.title}</h3>
-      <span className="author">{user.display_name}</span>
-      <p>{tileReview.body}</p>
-      <span className="rating">{tileReview.rating}</span>
-      {updateDeleteButtons}
+    <div className="reviewTileContainer">
+      <div className="reviewTitle">
+        <div className="reviewHeading">
+          <h3>{tileReview.title}</h3><br/>
+          <span className="author">Author: {user.display_name}</span>
+        </div>
+        <span className="rating">Rating: {tileReview.rating}/5</span>
+      </div>
+      <div className="reviewTileStyling">
+        <p>{tileReview.body}</p>
+          {updateDeleteButtons}
+      </div>
     </div>
 
     if (editClicked) {

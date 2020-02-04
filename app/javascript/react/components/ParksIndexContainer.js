@@ -38,16 +38,16 @@ const ParksIndexContainer = (props) => {
         id={park.id}
         name={park.name}
         description={park.description}
-      />
+        />
     )
   })
   let pageHeader = tag ? `${tag.name} Parks` : "Parks Index"
-  let buttonDisplay = isAdmin ? <Link to="/parks/new">Add a New Park</Link> : null
+  let buttonDisplay = isAdmin ? <Link className="button" to="/parks/new">Add a New Park</Link> : null
   return(
-    <div>
-      <h1>{pageHeader}</h1>
-      <ul>{parkTiles}</ul>
-      {buttonDisplay}
+    <div className="grid-container full parkTileImageContainer">
+      {parkTiles}
+      <br/>
+        {buttonDisplay}
     </div>
   )
 }
