@@ -105,7 +105,7 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
       <div>
         {errorList}
         <ReviewForm
-          editReview={review}
+          editReview={tileReview}
           saveReview={saveReview}
           cancelClicked={cancelClicked}
         />
