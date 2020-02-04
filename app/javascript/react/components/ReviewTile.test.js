@@ -14,7 +14,7 @@ describe("Review tile", () => {
       <ReviewTile
         review={review}
         user={{display_name:"Bob"}}
-      />
+        />
     )
   })
 
@@ -32,5 +32,9 @@ describe("Review tile", () => {
 
   it('should include an author name', () => {
     expect(wrapper.find("span.author").text()).toEqual("Bob")
+  })
+
+  it('should not show edit or delete buttons for non authenticated users.', () => {
+    expect(wrapper.find("input").length).toEqual(0)
   })
 })
