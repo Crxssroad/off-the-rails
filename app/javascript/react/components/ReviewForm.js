@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ReviewForm = props => {
   const emptyReview = {
@@ -7,6 +7,16 @@ const ReviewForm = props => {
     rating: ""
   }
   const [review, setReview] = useState(emptyReview)
+
+  useEffect(() => {
+    if(props.editReview) {
+      setReview({
+        title: props.editReview.title,
+        body: props.editReview.body,
+        rating: props.editReview.rating
+      })
+    }
+  }, [])
 
   const handleInput = event => {
     setReview({
@@ -19,11 +29,32 @@ const ReviewForm = props => {
     event.preventDefault()
 
     props.addNewReview(review)
+    setReview(emptyReview)
   }
+
+  const handleSave = event => {
+    event.preventDefault()
+
+    props.saveReview(review)
+  }
+
+  let formAction = handleSubmit
+  let submitButton = "Submit Review"
+  let cancelButton
+  if (props.editReview) {
+    submitButton = "Save"
+    formAction = handleSave
+    cancelButton = <input
+      type="button"
+      value="Cancel"
+      onClick={props.cancelClicked}
+    />
+  }
+
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formAction}>
         <label>
           Title
           <input name="title" onChange={handleInput} value={review.title} />
@@ -38,7 +69,8 @@ const ReviewForm = props => {
           <textarea name="body" onChange={handleInput} value={review.body} />
         </label>
 
-        <input type="submit" value="Submit Review" />
+        <input type="submit" value={submitButton} />
+        {cancelButton}
         </form>
     </div>
   )

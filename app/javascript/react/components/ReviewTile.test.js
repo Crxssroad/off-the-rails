@@ -8,15 +8,13 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe("Review tile", () => {
   let wrapper
-
+  let review = {title:"This is a review", body:"My experience was positive", rating:"4"}
   beforeEach(() => {
     wrapper = mount(
       <ReviewTile
-        title="This is a review"
-        body="My experience was positive"
+        review={review}
         user={{display_name:"Bob"}}
-        rating={4}
-      />
+        />
     )
   })
 
@@ -34,5 +32,9 @@ describe("Review tile", () => {
 
   it('should include an author name', () => {
     expect(wrapper.find("span.author").text()).toEqual("Bob")
+  })
+
+  it('should not show edit or delete buttons for non authenticated users.', () => {
+    expect(wrapper.find("input").length).toEqual(0)
   })
 })

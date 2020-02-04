@@ -68,8 +68,8 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       it "returns the park that was just created" do
         post :create, params: park1, format: :json
         returned_json = JSON.parse(response.body)
-        expect(returned_json["name"]).to eq "Splash Ablademy"
-        expect(returned_json["description"]).to eq "Lorn Splorsh. Mork Wet."
+        expect(returned_json["park"]["name"]).to eq "Splash Ablademy"
+        expect(returned_json["park"]["description"]).to eq "Lorn Splorsh. Mork Wet."
       end
     end
 

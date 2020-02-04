@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
@@ -6,13 +6,13 @@ import ReviewTile from './ReviewTile'
 import ParkDetailTile from './ParkDetailTile'
 
 const ParksShowContainer = (props) => {
-  const [park,setPark] = useState({})
+  const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
-  const [user, setUser] = useState(null)
+  const [signedInUser, setSignedInUser] = useState(null)
 
+  let id = props.match.params.id
   useEffect(() => {
-    let id = props.match.params.id
     fetch(`/api/v1/parks/${id}`)
     .then(response => {
       if(response.ok){
@@ -26,7 +26,7 @@ const ParksShowContainer = (props) => {
     .then(parsedBody => {
       setPark(parsedBody.park)
       setReviews(parsedBody.reviews.reviews)
-      setUser(parsedBody.user)
+      setSignedInUser(parsedBody.user)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
@@ -34,7 +34,6 @@ const ParksShowContainer = (props) => {
   }, [])
 
   const addNewReview = (formPayload) => {
-    let id = props.match.params.id
     fetch(`/api/v1/parks/${id}/reviews/`, {
       credentials: 'same-origin',
       method: "POST",
@@ -55,8 +54,8 @@ const ParksShowContainer = (props) => {
       .then(parsedBody => {
         if (typeof parsedBody === "object" && !Array.isArray(parsedBody)) {
           setReviews([
-            ...reviews,
-            parsedBody.review
+            parsedBody.review,
+            ...reviews
           ])
           setErrors([])
         } else {
@@ -76,21 +75,26 @@ const ParksShowContainer = (props) => {
     return (
       <ReviewTile
         key={review.id}
-        title={review.title}
-        body={review.body}
+        review={review}
         user={review.user}
-        rating={review.rating}
+        signedInUser={signedInUser}
+        parkId={id}
       />
     )
   })
 
   let reviewForm
 
-  if(user) {
+  if(signedInUser) {
     reviewForm = <ReviewForm
       addNewReview={addNewReview}
     />
-  }
+} else {
+  reviewForm =
+    <Fragment>
+      Please <a href="/users/sign_in">Sign In</a> or <a href="/users/sign_up">Sign Up</a> to leave a review.
+    </Fragment>
+}
 
   return(
     <div>
