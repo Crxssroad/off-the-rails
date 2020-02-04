@@ -93,14 +93,21 @@ const ParksShowContainer = (props) => {
   }
 
   return(
-    <div className="parksShowStyling">
-      <ParkDetailTile
-        name={park.name}
-        description={park.description}
-      />
-      {reviewList}
-      {errorList}
-      {reviewForm}
+    <div>
+      <div className="parksShowStyling">
+        <ParkDetailTile
+          name={park.name}
+          description={park.description}
+        />
+      </div>
+      <div className="parksShowStyling">
+        <div className="reviewListSection">
+          <h3>Reviews</h3>
+          {reviewList}
+        </div>
+        {errorList}
+        {reviewForm}
+      </div>
     </div>
   )
 }

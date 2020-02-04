@@ -12,7 +12,12 @@ const ParkDetailTile = (props) => {
           {props.name}
         </div>
       </div>
-      <p className="parkShowDescStyling"> {props.description}</p>
+      <div className="parkShowDescStyling">
+        <h3>
+          Description
+        </h3>
+        <p> {props.description}</p>
+      </div>
     </div>
   )
 }

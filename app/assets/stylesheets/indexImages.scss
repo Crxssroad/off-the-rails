@@ -26,6 +26,10 @@ body {
   margin-left:50px;
 }
 
+.top-bar-section {
+  margin-top: 15px;
+}
+
 .indexImg {
   position:relative;
   width:350px;
@@ -162,17 +166,17 @@ h2 {
     height:30px;
   }
 
-  .button {
-    font-family: "Bungee inline";
-    margin-top:20px;
-    background-color:#5AD0E8;
-    border:0px;
-    box-shadow:none;
-  }
+}
+.button {
+  font-family: "Bungee inline";
+  margin-top:20px;
+  background-color:#5AD0E8;
+  border:0px;
+  box-shadow:none;
 }
 
 .card img{
-  max-height: 500px;
+  max-height: 30vh;
   max-width:100%;
   object-fit:cover;
 }
@@ -181,15 +185,16 @@ h2 {
   background-color:white;
   border:1px solid #999;
   width:70%;
-  margin:0 auto;
+  margin:0 auto 20px;
+
 }
 
 .showPageRibbon {
-  width:72.3%;
-  background-color:#FD4360;
+  width:calc(70% + 28px);
+  background-color:#F24360;
   position:absolute;
   height:80px;
-  margin:35% 0 0 -16px;
+  margin:25vh 0 0 -15px;
   text-align: center;
   font-size: 48px;
   color:white;
@@ -222,9 +227,8 @@ h2 {
 }
 
 .parkShowDescStyling {
-  background-color:#eee;
   padding:40px;
-  border-bottom:1px solid #664c52;
+  border-bottom:1px solid #999;
   margin:0;
 }
 
@@ -239,7 +243,7 @@ h2 {
 
 .reviewTitle {
   background-color:#5AD0E8;
-  padding:5px 5px 5px 20px;
+  padding:5px 5px 5px 40px;
   display:grid;
   grid-template-columns: 33.3% 33.3% 33.3%;
 }
@@ -248,7 +252,45 @@ h2 {
   text-align: right;
   padding:10px 20px 10px 0;
 }
+
 .author {
 text-align:center;
   padding:10px 20px 10px 0;
+}
+
+.reviewListSection {
+ h3 {
+   padding: 40px;
+ }
+}
+
+.errorSpace {
+  margin-top: 1rem;
+  ul {
+    list-style-type: none;
+  }
+}
+
+.field > input[type=checkbox]{
+  width: auto;
+  height: auto;
+  box-shadow: none;
+}
+
+.logInTitle {
+  margin-top: 1rem;
+}
+
+.flash {
+  width: 60%;
+  color: white;
+  padding: 5px;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  background-color: #F24360;
+}
+
+.flash-notice {
+  background-color: #5AD0E8;
+  color: #000;
 }
