@@ -25,8 +25,8 @@ const ParksShowContainer = (props) => {
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
       setPark(parsedBody.park)
-      setReviews(parsedBody.reviews.reviews)
-      setSignedInUser(parsedBody.user)
+      setReviews(parsedBody.park.reviews)
+      setSignedInUser(parsedBody.park.currentUser)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
