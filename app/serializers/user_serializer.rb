@@ -6,8 +6,8 @@ class UserSerializer < ActiveModel::Serializer
     :profile_photo,
     :nickname,
     :display_name
-
-  def display_name
-    object.nickname != "" ? object.nickname : "#{object.first_name} #{object.last_name}"
-  end
+    
+    def display_name
+      object.nickname != "" ? object.nickname : "#{object.first_name} #{object.last_name}"
+    end
 end

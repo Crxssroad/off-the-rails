@@ -2,7 +2,8 @@ class Api::V1::ReviewsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
-    reviews = Review.all
+    park = Park.find(params[:park_id])
+    reviews = park.reviews
     render json: reviews
   end
 
@@ -13,6 +14,7 @@ class Api::V1::ReviewsController < ApplicationController
       review.park = park
       review.user = current_user
       if review.save
+        create_destroy_park_rating("create", review)
         render json: review
       else
         render json: review.errors.full_messages
@@ -24,9 +26,12 @@ class Api::V1::ReviewsController < ApplicationController
 
   def update
     review = Review.find(params[:id])
+    past_rating = review.rating
     review.assign_attributes(review_params)
 
     if review.save
+      new_rating = review.rating
+      update_park_rating(past_rating, new_rating, review.park)
       render json: review
     else
       render json: review.errors.full_messages
@@ -35,11 +40,35 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     review = Review.find(params[:id])
+    create_destroy_park_rating("destroy", review)
     review.destroy
     render json: true
   end
 
   private
+  def create_destroy_park_rating(action, review)
+    review_rating = review.rating
+    park = review.park
+
+    if action == "create"
+      park.total_rating += review_rating
+    elsif action == "destroy"
+      park.total_rating -= review_rating
+    end
+    park.save
+  end
+
+  def update_park_rating(past_rating, new_rating, park)
+    rating_difference = (past_rating - new_rating).abs
+
+    if past_rating < new_rating
+      park.total_rating += rating_difference
+    elsif past_rating > new_rating
+      park.total_rating -= rating_difference
+    end
+    park.save
+  end
+
   def review_params
     params.require(:review).permit(:title, :body, :rating, :user)
   end

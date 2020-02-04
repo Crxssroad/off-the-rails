@@ -13,6 +13,7 @@ describe("Park Detail Tile", () => {
     wrapper = mount(
       <ParkDetailTile
         name="Epcot"
+        averageRating={1}
         description="Largest golf ball in the world"
       />
     )
@@ -24,5 +25,8 @@ describe("Park Detail Tile", () => {
 
   it('should have a description', () => {
     expect(wrapper.find("p").text()).toBe("Largest golf ball in the world")
+  })
+  it('should have an average rating for the park', () => {
+    expect(wrapper.text().includes(1)).toBe(true)
   })
 })

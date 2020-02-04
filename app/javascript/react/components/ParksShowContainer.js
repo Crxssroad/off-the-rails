@@ -25,8 +25,8 @@ const ParksShowContainer = (props) => {
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
       setPark(parsedBody.park)
-      setReviews(parsedBody.reviews.reviews)
-      setSignedInUser(parsedBody.user)
+      setReviews(parsedBody.park.reviews)
+      setSignedInUser(parsedBody.park.currentUser)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
@@ -101,6 +101,7 @@ const ParksShowContainer = (props) => {
       <ParkDetailTile
         name={park.name}
         description={park.description}
+        averageRating={park.average_rating}
       />
       {reviewList}
       {errorList}
