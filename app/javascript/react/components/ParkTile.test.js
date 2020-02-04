@@ -22,12 +22,8 @@ describe("ParkTile", () => {
     )
   })
 
-  it("should render an h4 element containing the name of the park", () => {
-    expect(wrapper.find("h4").text()).toBe("Six Flags")
-  })
-
-  it("should render paragraph tag with the park description", () => {
-    expect(wrapper.find("p").text()).toBe("Cool things happen")
+  it("should render a parkTitleText element containing the name of the park", () => {
+    expect(wrapper.find("div.parkTitleText").text()).toBe("Six Flags")
   })
 
   it("should render a link to parks show page", () => {

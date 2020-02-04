@@ -1,0 +1,299 @@
+body {
+  background-color:#E2E4e7;
+}
+
+.top-bar {
+  background-color: #505149;
+  border-bottom:10px solid #FD4360;
+  padding:0;
+  margin: 0 0 30px 0;
+}
+
+.top-bar a {
+  font-family: "Bungee Inline"
+}
+
+.top-bar a:hover {
+  color: #5AD0E8;
+}
+
+.top-bar ul {
+  background-color: transparent;
+  margin-right:20px;
+}
+
+.top-bar h1 {
+  margin-left:50px;
+}
+
+.top-bar-section {
+  margin-top: 15px;
+}
+
+.indexImg {
+  position:relative;
+  width:350px;
+  height:250px;
+  border:5px solid #fff;
+  outline:1px solid #ccc;
+}
+
+.imageTileClass {
+  position:relative;
+  display:inline-flex;
+  margin:8px;
+  transition: .2s;
+  z-index:2;
+}
+
+.imageTileClass:hover {
+  transform: scale(1.1);
+  transition: .2s;
+  z-index:30;
+
+  .indexImageTextBox {
+    background-color:#5AD0E8;
+    transition: .3s;
+  }
+  .indexImageTextBox:after {
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 15px solid #5AD0E8;
+    transition: .3s;
+  }
+}
+
+.parkTileImageContainer {
+  text-align: center;
+}
+
+.indexImageTextBox {
+  position:absolute;
+  z-index:3;
+  display:flex;
+  background-color:rgba(259, 67, 95, 1);
+  top:180px;
+  left:-10px;
+  width:250.5px;
+  height:50px;
+
+
+
+  @media only screen and (max-width: 250px) {
+
+  }
+}
+
+.ribbonShadowBox {
+  position:relative;
+  display:flex;
+  z-index:1;
+  background-color:black;
+  top:-70px;
+  left:0px;
+  width:240px;
+  height:50px;
+  box-shadow: 2px 2px 6px 2px #000;
+}
+
+.indexImageTextBox:before {
+  height: 0;
+  width: 0;
+  top: -8.5px;
+  left: 0.1px;
+  border-bottom: 9px solid black;
+  border-left: 9px solid transparent;
+}
+
+.indexImageTextBox:before, .indexImageTextBox:after {
+  content: "";
+  position:absolute;
+}
+
+.indexImageTextBox:after {
+  height: 0;
+  width: 0;
+  right: -14.5px;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-left: 15px solid rgba(259, 67, 95, 1);
+}
+
+.parkTitleText, .parkTitleText a {
+  font-family: 'Roboto';
+  font-weight:bold;
+  margin:auto;
+
+}
+
+a, a:hover {
+  color:white;
+}
+
+.newFormCenterContainer {
+  margin: 0 auto;
+  width:60%;
+  text-align: center;
+}
+
+.formContainer {
+  background-color: white;
+  border:1px solid #ccc;
+  padding:0 5px 20px 5px;
+  margin:20px 0 0 0;
+}
+h2 {
+  background-color:#FD4360;
+  font-family: "Montserrat";
+  font-weight:bold;
+  color:white;
+  margin:0 10px 20px 10px;
+}
+
+.inputContainer {
+  text-align: left;
+  width:50%;
+  margin:0 auto;
+
+  input {
+    width:100%;
+    margin:0 0 10px 0;
+    transition: box-shadow 0.5s;
+    border:1px solid #ccc;
+    box-shadow: inset 0px 5px 1px -15px #f6f6f6,
+    inset 0px 11px 8px -10px #ddd;
+    padding:3px 10px;
+    height:30px;
+  }
+
+}
+.button {
+  font-family: "Bungee inline";
+  margin-top:20px;
+  background-color:#5AD0E8;
+  border:0px;
+  box-shadow:none;
+}
+
+.card img{
+  max-height: 30vh;
+  max-width:100%;
+  object-fit:cover;
+}
+
+.parksShowStyling {
+  background-color:white;
+  border:1px solid #999;
+  width:70%;
+  margin:0 auto 20px;
+
+}
+
+.showPageRibbon {
+  width:calc(70% + 28px);
+  background-color:#F24360;
+  position:absolute;
+  height:80px;
+  margin:25vh 0 0 -15px;
+  text-align: center;
+  font-size: 48px;
+  color:white;
+  font-family: 'Bungee Inline';
+  font-weight:bold;
+  padding:5px 0 5px 0;
+}
+
+.showPageRibbon:before, .showPageRibbon:after {
+  content: "";
+  position: absolute;
+}
+
+.showPageRibbon:before {
+  height: 0;
+  width: 0;
+  top: -15px;
+  left: 0px;
+  border-top: 15px solid transparent;
+  border-right: 15px solid #BE3248;
+}
+
+.showPageRibbon:after {
+  height: 0;
+  width: 0;
+  right: 0;
+  bottom: -15px;
+  border-top: 15px solid #BE3248;
+  border-right: 15px solid transparent;
+}
+
+.parkShowDescStyling {
+  padding:40px;
+  border-bottom:1px solid #999;
+  margin:0;
+}
+
+.reviewTileStyling {
+  padding:40px;
+}
+
+.reviewForm {
+  background-color:#eee;
+  border-top:1px solid #664c52;
+}
+
+.reviewTitle {
+  background-color:#5AD0E8;
+  padding:5px 5px 5px 40px;
+  display:grid;
+  grid-template-columns: 50% 50%;
+}
+
+.rating {
+  text-align: right;
+  padding:10px 20px 10px 0;
+}
+
+.author {
+text-align:center;
+  padding:10px 20px 10px 0;
+}
+
+.reviewHeading {
+   line-height: .5;
+   padding-bottom: 10px;
+}
+
+.errorSpace {
+  margin-top: 1rem;
+  ul {
+    list-style-type: none;
+  }
+}
+
+.field > input[type=checkbox]{
+  width: auto;
+  height: auto;
+  box-shadow: none;
+}
+
+.logInTitle {
+  margin-top: 1rem;
+}
+
+.flash {
+  width: 60%;
+  color: white;
+  padding: 5px;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  background-color: #F24360;
+}
+
+.flash-notice {
+  background-color: #5AD0E8;
+  color: #000;
+}
+
+.reviewSectionHeading {
+  padding: 20px 40px 0 40px;
+}

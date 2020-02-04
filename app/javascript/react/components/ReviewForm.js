@@ -53,25 +53,27 @@ const ReviewForm = props => {
 
 
   return (
-    <div>
+    <div className="reviewTileStyling reviewForm">
       <form onSubmit={formAction}>
-        <label>
-          Title
-          <input name="title" onChange={handleInput} value={review.title} />
-        </label>
+        <div className="inputContainer">
+          <label>
+            Title
+            <input name="title" onChange={handleInput} value={review.title} />
+          </label>
 
-        <label>Rating
-          <input name="rating" onChange={handleInput} value={review.rating} />
-        </label>
+          <label>Rating
+            <input name="rating" onChange={handleInput} value={review.rating} />
+          </label>
 
-        <label>
-          Review
-          <textarea name="body" onChange={handleInput} value={review.body} />
-        </label>
+          <label>
+            Review
+            <textarea name="body" onChange={handleInput} value={review.body} />
+          </label>
 
-        <input type="submit" value={submitButton} />
-        {cancelButton}
-        </form>
+          <input className="button" type="submit" value={submitButton} />
+          {cancelButton}
+        </div>
+      </form>
     </div>
   )
 }
