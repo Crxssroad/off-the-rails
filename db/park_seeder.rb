@@ -2,11 +2,41 @@ class ParkSeeder
   IPSUM = %W(Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ligula quis lectus auctor venenatis a sed est. Phasellus ac ultricies nisi, lacinia ornare lorem. Mauris justo risus, euismod et felis at, viverra lobortis velit. In ante dui, aliquet porttitor augue et, dignissim luctus lectus. Integer eget dignissim est. Ut fringilla accumsan facilisis. Nullam rutrum magna fermentum, placerat sapien sollicitudin, consectetur mauris. Phasellus ornare, arcu quis molestie dictum, eros magna egestas purus, ut tempus erat risus sit amet purus. Etiam fringilla pharetra ex, sit amet efficitur diam elementum ac. Cras magna leo, mattis vestibulum imperdiet vel, cursus nec leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas dapibus mi eget risus iaculis imperdiet. Nullam porttitor tristique mi, ut mattis neque vehicula sit amet. Aliquam enim orci, venenatis at augue eu, iaculis porttitor dolor. Proin quis dui non quam ornare rutrum. Integer suscipit lacinia urna, in varius leo interdum vitae. Vivamus ut dictum ante, at malesuada nunc. Suspendisse vulputate lacinia nisi in feugiat. Vivamus interdum velit sit amet nisl convallis, at dignissim arcu mattis. Aenean nec maximus nisl. Morbi in finibus quam, a vulputate metus.).join(" ")
 
   PARKS = [
-    { name: "Epcot", description: IPSUM },
-    { name: "Magic Kingdom", description: IPSUM },
-    { name: "Universal Studios", description: IPSUM },
-    { name: "Six Flags", description: IPSUM },
-    { name: "Sea World", description: IPSUM }
+    {
+      name: "Epcot",
+      description: IPSUM,
+      city: "Boston",
+      state: "MA",
+      country: "USA" 
+    },
+    {
+      name: "Magic Kingdom",
+      description: IPSUM,
+      city: "Boston",
+      state: "MA",
+      country: "USA" 
+    },
+    {
+      name: "Universal Studios",
+      description: IPSUM,
+      city: "Boston",
+      state: "MA",
+      country: "USA" 
+    },
+    {
+      name: "Six Flags",
+      description: IPSUM,
+      city: "Boston",
+      state: "MA",
+      country: "USA" 
+    },
+    {
+      name: "Sea World",
+      description: IPSUM,
+      city: "Boston",
+      state: "MA",
+      country: "USA" 
+    }
   ]
 
   def self.seed!
