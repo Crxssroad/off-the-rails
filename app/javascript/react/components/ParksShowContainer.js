@@ -25,15 +25,15 @@ const ParksShowContainer = (props) => {
     .then(parsedBody => parsedBody.json())
     .then(parsedBody => {
       setPark(parsedBody.park)
-      setReviews(parsedBody.reviews.reviews)
-      setSignedInUser(parsedBody.user)
+      setReviews(parsedBody.park.reviews)
+      setSignedInUser(parsedBody.park.currentUser)
     })
     .catch(error => {
       console.error(`Error in fetch ${error.message}`)
     })
   }, [])
 
-  const addNewReview = (formPayload) => {
+  const addNewReview = (formPayload, emptyReviewForm) => {
     fetch(`/api/v1/parks/${id}/reviews/`, {
       credentials: 'same-origin',
       method: "POST",
@@ -57,7 +57,9 @@ const ParksShowContainer = (props) => {
             parsedBody.review,
             ...reviews
           ])
+          setPark(parsedBody.review.park)
           setErrors([])
+          emptyReviewForm()
         } else {
           setErrors(parsedBody)
         }
@@ -77,8 +79,10 @@ const ParksShowContainer = (props) => {
         key={review.id}
         review={review}
         user={review.user}
+        displayName={review.display_name}
         signedInUser={signedInUser}
         parkId={id}
+        setPark={setPark}
       />
     )
   })
@@ -105,6 +109,7 @@ const ParksShowContainer = (props) => {
           city={park.city}
           state={park.state}
           country={park.country}
+          averageRating={park.average_rating}
         />
       </div>
       <div className="parksShowStyling">
