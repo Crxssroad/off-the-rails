@@ -3,14 +3,16 @@ require 'rails_helper'
 RSpec.describe Api::V1::ReviewsController do
   let!(:park1) { Park.create(
     name: "Disney",
-    description: "Happiest place on Earth!"
+    description: "Happiest place on Earth!",
+    city: "Boston",
+    country: "USA"
     )}
   let!(:user1) { FactoryBot.create(:user) }
   let!(:review1) {
     {
       review: {
         title: "This is awesome",
-        body: "Because I said so.",
+        body: "Because I said so anything anything anything.",
         rating: 5
       },
       park_id: park1.id
@@ -18,7 +20,24 @@ RSpec.describe Api::V1::ReviewsController do
   }
 
   describe "POST#create" do
-    context "Post of review was succesful" do
+    context "Post of review was successful" do
+      let!(:park1) { Park.create(
+        name: "Disney",
+        description: "Happiest place on Earth!",
+        city: "Boston",
+        country: "USA"
+      )}
+      let!(:user1) { FactoryBot.create(:user) }
+      let!(:review1) {
+        {
+          review: {
+            title: "This is awesome",
+            body: "Because I said so and I am the very best there is.",
+            rating: 5
+          },
+          park_id: park1.id
+        }
+      }
 
       it "should persist in the database" do
         sign_in user1
@@ -28,7 +47,6 @@ RSpec.describe Api::V1::ReviewsController do
 
         expect(response.status).to eq(200)
         expect(response.content_type).to eq("application/json")
-
         expect(next_count).to be previous_count + 1
       end
 
@@ -38,15 +56,17 @@ RSpec.describe Api::V1::ReviewsController do
         returned_json = JSON.parse(response.body)
 
         expect(returned_json["review"]["title"]).to eq "This is awesome"
-        expect(returned_json["review"]["body"]).to eq "Because I said so."
+        expect(returned_json["review"]["body"]).to eq "Because I said so and I am the very best there is."
         expect(returned_json["review"]["rating"]).to eq 5
       end
     end
 
-    context "Post was unsuccesful" do
+    context "Post was unsuccessful" do
       let!(:park2) { Park.create(
         name: "Universal",
-        description: "Second happiest place on Earth!"
+        description: "Second happiest place on Earth!",
+        city: "Boston",
+        country: "USA"
       )}
       let!(:bad_review) {
         {
@@ -87,7 +107,7 @@ RSpec.describe Api::V1::ReviewsController do
         updated_review = {
           review: {
             title: "This is slightly less awesome",
-            body: "Because we all say so",
+            body: "Because we all say so and I am the best so i know more",
             rating: 4
           },
           id: old_review["id"],
@@ -109,7 +129,7 @@ RSpec.describe Api::V1::ReviewsController do
         updated_review = {
           review: {
             title: "This is slightly less awesome",
-            body: "Because we all say so",
+            body: "Because we all say so  I am the best so i know more",
             rating: 4
           },
           id: old_review["id"],

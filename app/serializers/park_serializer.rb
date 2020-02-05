@@ -1,5 +1,5 @@
 class ParkSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :reviews, :average_rating, :currentUser
+  attributes :id, :name, :description, :reviews, :average_rating, :currentUser, :city, :state, :country
 
   has_many :reviews, each_serializer: ReviewSerializer
 
