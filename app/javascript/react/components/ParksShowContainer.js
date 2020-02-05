@@ -110,6 +110,7 @@ const ParksShowContainer = (props) => {
           state={park.state}
           country={park.country}
           averageRating={park.average_rating}
+          tags={park.tags}
         />
       </div>
       <div className="parksShowStyling">
