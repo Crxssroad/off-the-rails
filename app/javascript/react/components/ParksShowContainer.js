@@ -33,7 +33,7 @@ const ParksShowContainer = (props) => {
     })
   }, [])
 
-  const addNewReview = (formPayload) => {
+  const addNewReview = (formPayload, emptyReviewForm) => {
     fetch(`/api/v1/parks/${id}/reviews/`, {
       credentials: 'same-origin',
       method: "POST",
@@ -59,6 +59,7 @@ const ParksShowContainer = (props) => {
           ])
           setPark(parsedBody.review.park)
           setErrors([])
+          emptyReviewForm()
         } else {
           setErrors(parsedBody)
         }
