@@ -62,7 +62,6 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
       }
     })
     .then(parsedBody => {
-      debugger
       setPark(parsedBody.park)
       setDeleted(true)
     })
