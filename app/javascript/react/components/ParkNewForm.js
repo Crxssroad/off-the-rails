@@ -4,7 +4,10 @@ import { Redirect } from 'react-router-dom'
 const ParkNewForm = (props) => {
   const defaultPark = {
     name: "",
-    description: ""
+    description: "",
+    city: "",
+    state: "",
+    country: ""
   }
   const [park, setPark] = useState(defaultPark)
   const [errors, setErrors] = useState([])
@@ -71,6 +74,7 @@ const ParkNewForm = (props) => {
               placeholder="Name"
               />
           </label>
+
           <label>
             Description <br />
             <input
@@ -81,6 +85,35 @@ const ParkNewForm = (props) => {
               />
           </label>
 
+          <label>
+            City <br />
+          <input
+            name="city"
+            onChange={handleInput}
+            value={park.city}
+            placeholder="City"
+            />
+        </label>
+
+        <label>
+          State<br />
+        <input
+          name="state"
+          onChange={handleInput}
+          value={park.state}
+          placeholder="State"
+          />
+      </label>
+
+      <label>
+        Country <br />
+      <input
+        name="country"
+        onChange={handleInput}
+        value={park.country}
+        placeholder="Country"
+        />
+    </label>
           <input className="button" type="submit" value="Add new park" />
         </div>
       </form>
