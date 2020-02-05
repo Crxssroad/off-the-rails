@@ -102,6 +102,9 @@ const ParksShowContainer = (props) => {
         <ParkDetailTile
           name={park.name}
           description={park.description}
+          city={park.city}
+          state={park.state}
+          country={park.country}
         />
       </div>
       <div className="parksShowStyling">

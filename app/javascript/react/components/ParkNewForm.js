@@ -4,7 +4,10 @@ import { Redirect } from 'react-router-dom'
 const ParkNewForm = (props) => {
   const defaultPark = {
     name: "",
-    description: ""
+    description: "",
+    city: "",
+    state: "",
+    country: ""
   }
   const [park, setPark] = useState(defaultPark)
   const [errors, setErrors] = useState([])

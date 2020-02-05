@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2020_02_05_150728) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city", default: "city", null: false
+    t.string "city", null: false
     t.string "state"
-    t.string "country", default: "country", null: false
+    t.string "country", null: false
   end
 
   create_table "parks_tags", force: :cascade do |t|
