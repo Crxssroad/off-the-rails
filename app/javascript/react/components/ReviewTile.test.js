@@ -13,8 +13,8 @@ describe("Review tile", () => {
     wrapper = mount(
       <ReviewTile
         review={review}
-        user={{display_name:"Bob"}}
-        />
+        displayName={"Bob"}
+      />
     )
   })
 
