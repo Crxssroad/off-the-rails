@@ -57,6 +57,7 @@ const ParksShowContainer = (props) => {
             parsedBody.review,
             ...reviews
           ])
+          setPark(parsedBody.review.park)
           setErrors([])
         } else {
           setErrors(parsedBody)
