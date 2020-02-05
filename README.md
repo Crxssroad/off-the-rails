@@ -2,7 +2,7 @@
 
 # Off the Rails
 
-Theme park review site.
+An "off the rails" Theme park review site.
 
 * Authors
   * Braden
