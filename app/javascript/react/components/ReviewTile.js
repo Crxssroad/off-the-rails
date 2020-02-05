@@ -72,19 +72,21 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
 
   if (signedInUser && signedInUser.id === user.id || signedInUser && signedInUser.role === "admin") {
     updateDeleteButtons = <form>
-      <input onClick={onEditClick} type="button" value="Edit" />
-      <input onClick={deleteReview} type="button" value="Delete" />
+      <input className="editButton" onClick={onEditClick} type="button" value="Edit" />•
+      <input  className="deleteButton" onClick={deleteReview} type="button" value="Delete" />
     </form>
   }
 
   let display =
-    <div className="reviewTileContainer">
+    <div>
+      <hr/>
       <div className="reviewTitle">
         <div className="reviewHeading">
-          <h3>{tileReview.title}</h3><br/>
+          <img src={review.user.profile_photo.url} />
+          <h3>{tileReview.title}</h3>
           <span className="author">Author: {displayName}</span>
+          <span className="rating">Rating: {tileReview.rating}/5</span>
         </div>
-        <span className="rating">Rating: {tileReview.rating}/5</span>
       </div>
       <div className="reviewTileStyling">
         <p>{tileReview.body}</p>
@@ -110,7 +112,7 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
         />
       </div>
     }
-
+debugger
     if(deleted){
       display = "Review successfully deleted"
     }
