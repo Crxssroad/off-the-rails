@@ -12,7 +12,7 @@ RSpec.describe Api::V1::ReviewsController do
     {
       review: {
         title: "This is awesome",
-        body: "Because I said so.",
+        body: "Because I said so anything anything anything.",
         rating: 5
       },
       park_id: park1.id
@@ -107,7 +107,7 @@ RSpec.describe Api::V1::ReviewsController do
         updated_review = {
           review: {
             title: "This is slightly less awesome",
-            body: "Because we all say so",
+            body: "Because we all say so and I am the best so i know more",
             rating: 4
           },
           id: old_review["id"],
@@ -129,7 +129,7 @@ RSpec.describe Api::V1::ReviewsController do
         updated_review = {
           review: {
             title: "This is slightly less awesome",
-            body: "Because we all say so",
+            body: "Because we all say so  I am the best so i know more",
             rating: 4
           },
           id: old_review["id"],
