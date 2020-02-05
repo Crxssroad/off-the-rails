@@ -10,6 +10,9 @@ if Rails.env.development? || Rails.env.production?
   AdminSeeder.seed!
   TagSeeder.seed!
   ParkSeeder.seed!
-  ReviewSeeder.seed!
+  all_users = User.all
+  all_parks = Park.all
+  reviews = ReviewSeeder.new(all_users, all_parks)
+  reviews.seed!
   AssignParkTags.seed!
 end
