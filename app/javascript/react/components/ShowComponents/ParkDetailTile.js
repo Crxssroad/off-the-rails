@@ -1,8 +1,7 @@
 import React from 'react'
-import TagTile from './TagTile'
+import TagTile from '../IndexComponents/TagTile'
 
 const ParkDetailTile = (props) => {
-  let image = 'https://images2.imgbox.com/7d/15/MhS0zZLD_o.jpg'
   let ratingDisplay = `Rating: ${props.averageRating}/5`
   let tagList
   if(props.tags) {
@@ -20,6 +19,7 @@ const ParkDetailTile = (props) => {
     ratingDisplay = "Be the first to review"
   }
 
+let image = props.image ? props.image.url : null
   return (
     <div>
       <div className="card">
