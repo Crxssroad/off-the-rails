@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :park
   belongs_to :user
+  has_many :votes
 
   validates :title, presence: true
   validates :body, presence: true
