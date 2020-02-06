@@ -82,6 +82,7 @@ const ParksShowContainer = (props) => {
         signedInUser={signedInUser}
         parkId={id}
         setPark={setPark}
+        voteState={review.vote_status}
       />
     )
   })

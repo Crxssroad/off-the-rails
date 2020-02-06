@@ -356,7 +356,7 @@ text-align: right;
 }
 
 .welcomeMessage {
-  color: white;  
+  color: white;
 }
 
 .signInPrompt {
@@ -370,4 +370,25 @@ text-align: right;
 
 .signOutSign{
   text-align: right
+}
+
+.vote-buttons-container {
+  width: 4rem;
+}
+
+.vote, .vote:focus {
+  color: #5AD0E8;
+  outline: none;
+  margin: 0 0.5rem;
+}
+
+.vote-selected, .vote-selected:focus {
+  color: #F24360;
+  outline: none;
+}
+
+.vote-count-container {
+  display: block;
+  margin: 1rem 0;
+  width: fit-content;
 }
