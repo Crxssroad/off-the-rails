@@ -3,21 +3,13 @@ require 'rails_helper'
 RSpec.describe Api::V1::VotesController do
   let!(:park) { Park.create(
     name: "OTR Park",
-    description: "This park is off the rails!"
+    description: "This park is off the rails!",
+    city: "Boston",
+    country: "USA"
     )}
   let!(:user1) { FactoryBot.create(:user) }
   let!(:user2) { FactoryBot.create(:user) }
-  # let!(:review1) {
-  #   {
-  #     review: {
-        # title: "I liked this place",
-        # body: "Lots of cool stuff to do, for real.",
-        # rating: 5,
-        # vote_count: 4
-  #     },
-  #     park_id: park1.id
-  #   }
-  # }
+
   let!(:review) { Review.create(
       title: "I liked this place",
       body: "Lots of cool stuff to do, for real.",
