@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import ParksIndexContainer from './ParksIndexContainer'
-import ParksShowContainer from './ParksShowContainer'
-import TagsIndexContainer from './TagsIndexContainer'
-import ParkNewContainer from './ParkNewContainer'
+import ParksIndexContainer from './IndexComponents/ParksIndexContainer'
+import ParksShowContainer from './ShowComponents/ParksShowContainer'
+import TagsIndexContainer from './IndexComponents/TagsIndexContainer'
+import ParkNewContainer from './FormsComponents/ParkNewContainer'
 
 export const App = () => {
   return (

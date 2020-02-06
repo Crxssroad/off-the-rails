@@ -13,7 +13,7 @@ describe("ErrorList", () => {
     "I shouldn't have dropped out of college",
     "An array of errors"
   ]
-  
+
   beforeEach(() => {
     wrapper = mount(
       <ErrorList

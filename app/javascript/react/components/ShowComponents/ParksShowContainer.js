@@ -1,11 +1,12 @@
 import React, { useState, useEffect, Fragment } from 'react'
 
-import ReviewForm from './ReviewForm'
-import ErrorList from './ErrorList'
+import ReviewForm from '../FormsComponents/ReviewForm'
+import ErrorList from '../ErrorList'
 import ReviewTile from './ReviewTile'
 import ParkDetailTile from './ParkDetailTile'
 
 const ParksShowContainer = (props) => {
+
   const [park, setPark] = useState({})
   const [reviews, setReviews] = useState([])
   const [errors, setErrors] = useState([])
@@ -112,6 +113,7 @@ const ParksShowContainer = (props) => {
           country={park.country}
           averageRating={park.average_rating}
           tags={park.tags}
+          image={park.park_photo}
         />
       </div>
       <div className="parksShowStyling">
