@@ -4,11 +4,15 @@ RSpec.describe Api::V1::ParksController, type: :controller do
   describe "GET#index" do
     let!(:park1) { Park.create(
       name: "Disney",
-      description: "Happiest place on Earth!"
+      description: "Happiest place on Earth!",
+      city: "Boston",
+      country: "USA"
     )}
     let!(:park2) { Park.create(
       name: "Six Flags",
-      description: "Cool things happen!"
+      description: "Cool things happen!",
+      city: "Boston",
+      country: "USA"
     )}
 
     it "should return all the parks on the index page" do
@@ -26,13 +30,16 @@ RSpec.describe Api::V1::ParksController, type: :controller do
 
       expect(returned_json["parks"][1]["name"]).to eq("Six Flags")
       expect(returned_json["parks"][1]["description"]).to eq("Cool things happen!")
+
     end
   end
 
   describe "GET#show" do
     let!(:park1) { Park.create(
       name: "Disney",
-      description: "Happiest place on Earth!"
+      description: "Happiest place on Earth!",
+      city: "Boston",
+      country: "USA"
     )}
 
     it "should return a single park on the show page" do
@@ -44,14 +51,19 @@ RSpec.describe Api::V1::ParksController, type: :controller do
 
       expect(returned_json["park"]["name"]).to eq("Disney")
       expect(returned_json["park"]["description"]).to eq("Happiest place on Earth!")
+      expect(returned_json["park"]["city"]).to eq("Boston")
+      expect(returned_json["park"]["country"]).to eq("USA")
+
     end
   end
 
   describe "POST#create" do
-    context "Post of park was succesful" do
+    context "Post of park was successful" do
       let!(:park1) { { park: {
         name: "Splash Ablademy",
-        description: "Lorn Splorsh. Mork Wet."
+        description: "Lorn Splorsh. Mork Wet.",
+        city: "Boston",
+        country: "USA"
       } } }
 
       it "should persist in the database" do
@@ -68,14 +80,19 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       it "returns the park that was just created" do
         post :create, params: park1, format: :json
         returned_json = JSON.parse(response.body)
-        expect(returned_json["park"]["name"]).to eq "Splash Ablademy"
-        expect(returned_json["park"]["description"]).to eq "Lorn Splorsh. Mork Wet."
+        expect(returned_json["park"]["name"]).to eq ("Splash Ablademy")
+        expect(returned_json["park"]["description"]).to eq ("Lorn Splorsh. Mork Wet.")
+        expect(returned_json["park"]["city"]).to eq("Boston")
+        expect(returned_json["park"]["country"]).to eq("USA")
+
       end
     end
 
-    context "Post was unsuccesful" do
+    context "Post was unsuccessful" do
       let!(:bad_park1) { { park: { name: "Splash Ablademy" } } }
       let!(:bad_park2) { { park: { description: "Park with no name" } } }
+      let!(:bad_park3) { { park: { city: "Park with no city" } } }
+      let!(:bad_park4) { { park: { country: "Park with no country" } } }
 
       it "doesn't save to the database" do
         previous_count = Park.count
@@ -92,6 +109,14 @@ RSpec.describe Api::V1::ParksController, type: :controller do
         post :create, params: bad_park2, format: :json
         returned_json = JSON.parse(response.body)
         expect(returned_json.include?("Name can't be blank")).to be true
+
+        post :create, params: bad_park3, format: :json
+        returned_json = JSON.parse(response.body)
+        expect(returned_json.include?("Country can't be blank")).to be true
+
+        post :create, params: bad_park4, format: :json
+        returned_json = JSON.parse(response.body)
+        expect(returned_json.include?("City can't be blank")).to be true
       end
     end
   end
