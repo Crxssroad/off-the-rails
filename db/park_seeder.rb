@@ -7,35 +7,40 @@ class ParkSeeder
       description: IPSUM,
       city: "Boston",
       state: "MA",
-      country: "USA" 
+      country: "USA",
+      total_rating: 10
     },
     {
       name: "Magic Kingdom",
       description: IPSUM,
       city: "Boston",
       state: "MA",
-      country: "USA" 
+      country: "USA",
+      total_rating: 10
     },
     {
       name: "Universal Studios",
       description: IPSUM,
       city: "Boston",
       state: "MA",
-      country: "USA" 
+      country: "USA",
+      total_rating: 10
     },
     {
       name: "Six Flags",
       description: IPSUM,
       city: "Boston",
       state: "MA",
-      country: "USA" 
+      country: "USA",
+      total_rating: 10
     },
     {
       name: "Sea World",
       description: IPSUM,
       city: "Boston",
       state: "MA",
-      country: "USA" 
+      country: "USA",
+      total_rating: 10
     }
   ]
 

@@ -15,7 +15,7 @@ const ParkDetailTile = (props) => {
       )
     })
   }
-
+  
   if (props.averageRating === 0) {
     ratingDisplay = "Be the first to review"
   }
