@@ -124,7 +124,7 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName, 
         downvoteClass+= " vote-selected"
       }
     }
-    voteButtons = <div className="votes-container">
+    voteButtons = <div className="vote-buttons-container">
       <button className={upvoteClass} onClick={handleVote} value="1"></button>
       <button className={downvoteClass} onClick={handleVote} value="-1"></button>
     </div>
@@ -143,7 +143,7 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName, 
         <div className="reviewHeading">
           <h3>{tileReview.title}</h3><br/>
           <span className="author">Author: {displayName}</span>
-          <p>{totalVotes} votes</p>
+          <span className="vote-count">{totalVotes} votes</span>
         </div>
         <span className="rating">Rating: {tileReview.rating}/5</span>
       </div>
