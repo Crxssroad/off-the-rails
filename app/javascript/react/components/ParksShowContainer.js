@@ -96,9 +96,10 @@ const ParksShowContainer = (props) => {
     />
 } else {
   reviewForm =
-    <Fragment>
+    <div className="signInPrompt">
+      <hr/>
       Please <a href="/users/sign_in">Sign In</a> or <a href="/users/sign_up">Sign Up</a> to leave a review.
-    </Fragment>
+    </div>
 }
 
   return(
