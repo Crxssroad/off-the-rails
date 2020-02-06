@@ -41,6 +41,7 @@ const ParksIndexContainer = (props) => {
         city={park.city}
         state={park.state}
         country={park.country}
+        image={park.park_photo.url}
         />
     )
   })

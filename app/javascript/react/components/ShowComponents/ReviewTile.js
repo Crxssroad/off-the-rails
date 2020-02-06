@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react'
 
-import ReviewForm from './ReviewForm'
-import ErrorList from './ErrorList'
+import ReviewForm from '../FormsComponents/ReviewForm'
+import ErrorList from '../ErrorList'
 
 const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }) => {
   let { title, body, rating, id } = review
