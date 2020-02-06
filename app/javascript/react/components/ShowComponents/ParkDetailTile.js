@@ -1,7 +1,19 @@
 import React from 'react'
+import TagTile from './TagTile'
 
 const ParkDetailTile = (props) => {
   let ratingDisplay = `Rating: ${props.averageRating}/5`
+  let tagList
+  if(props.tags) {
+    tagList = props.tags.map(tag => {
+      return(
+        <TagTile
+          key={tag.id}
+          tag={tag}
+        />
+      )
+    })
+  }
 
   if (props.averageRating === 0) {
     ratingDisplay = "Be the first to review"
@@ -24,6 +36,12 @@ let image = props.image ? props.image.url : null
           {ratingDisplay}
         </h6>
         <p>{props.description}</p>
+      </div>
+      <div className="parkShowTags">
+        <h4>
+          Tags
+        </h4>
+        <ul className="tagArea">{tagList}</ul>
       </div>
     </div>
   )

@@ -14,5 +14,6 @@ if Rails.env.development? || Rails.env.production?
   all_parks = Park.all
   reviews = ReviewSeeder.new(all_users, all_parks)
   reviews.seed!
-  AssignParkTags.seed!
+  assigner = AssignParkTags.new(all_parks)
+  assigner.seed!(5)
 end

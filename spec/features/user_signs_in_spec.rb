@@ -7,7 +7,6 @@ feature 'user signs in', %Q{
 } do
   scenario 'specify valid credentials' do
     user = FactoryBot.create(:user)
-
     visit new_user_session_path
 
     fill_in 'Email', with: user.email
@@ -17,6 +16,9 @@ feature 'user signs in', %Q{
 
     expect(page).to have_content('Signed in successfully')
     expect(page).to have_content('Sign Out')
+    expect(page).to have_content(
+      "Welcome back, #{user.first_name} #{user.last_name}"
+    )
   end
 
   scenario 'specify invalid credentials' do

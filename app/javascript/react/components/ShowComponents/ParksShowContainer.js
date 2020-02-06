@@ -67,7 +67,6 @@ const ParksShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch ${error.message}`))
   }
-
   let errorList
 
   if (errors.length > 0) {
@@ -84,6 +83,7 @@ const ParksShowContainer = (props) => {
         signedInUser={signedInUser}
         parkId={id}
         setPark={setPark}
+        voteState={review.vote_status}
       />
     )
   })
@@ -96,9 +96,10 @@ const ParksShowContainer = (props) => {
     />
 } else {
   reviewForm =
-    <Fragment>
+    <div className="signInPrompt">
+      <hr/>
       Please <a href="/users/sign_in">Sign In</a> or <a href="/users/sign_up">Sign Up</a> to leave a review.
-    </Fragment>
+    </div>
 }
 
   return(
@@ -111,12 +112,13 @@ const ParksShowContainer = (props) => {
           state={park.state}
           country={park.country}
           averageRating={park.average_rating}
+          tags={park.tags}
           image={park.park_photo}
         />
       </div>
       <div className="parksShowStyling">
         <div className="reviewSectionHeading">
-          <h3>Reviews</h3>
+          <h4>{reviewList.length} Reviews</h4>
           {reviewList}
         </div>
         {errorList}

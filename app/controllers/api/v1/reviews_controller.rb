@@ -4,7 +4,7 @@ class Api::V1::ReviewsController < ApplicationController
   def index
     park = Park.find(params[:park_id])
     reviews = park.reviews
-    render json: reviews
+    render json: reviews.order('created_at DESC')
   end
 
   def create
@@ -13,8 +13,10 @@ class Api::V1::ReviewsController < ApplicationController
       review = Review.new(review_params)
       review.park = park
       review.user = current_user
+      review.vote_count = 1
       if review.save
         create_destroy_park_rating("create", review)
+        Vote.create(review: review, user: review.user, value: 1)
         render json: review
       else
         render json: review.errors.full_messages

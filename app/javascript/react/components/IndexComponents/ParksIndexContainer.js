@@ -45,13 +45,15 @@ const ParksIndexContainer = (props) => {
         />
     )
   })
-  let pageHeader = tag ? `${tag.name} Parks` : "Parks Index"
-  let buttonDisplay = isAdmin ? <Link className="button" to="/parks/new">Add a New Park</Link> : null
+  let pageHeader = tag ? `${tag.name} Parks` : ""
+  let newParkButtonDisplay = isAdmin ? <Link className="button" to="/parks/new">Add a New Park</Link> : null
   return(
     <div className="grid-container full parkTileImageContainer">
+      <h1>{pageHeader}</h1>
       {parkTiles}
       <br/>
-        {buttonDisplay}
+        {newParkButtonDisplay}
+        <Link className="button" to="/tags">View tags</Link>
     </div>
   )
 }
