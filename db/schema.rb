@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 2020_02_05_184331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_rating", default: 0, null: false
-    t.string "city", default: "To Be Added", null: false
+    t.string "city", null: false
     t.string "state"
-    t.string "country", default: "To Be Added", null: false
+    t.string "country", null: false
   end
 
   create_table "parks_tags", force: :cascade do |t|
