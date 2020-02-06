@@ -224,6 +224,9 @@ class ReviewSeeder
       if new_review.nil?
         new_review = Review.new(review)
         new_review.save
+        associated_park = new_review.park
+        associated_park.total_rating += new_review.rating
+        associated_park.save
       end
     end
   end

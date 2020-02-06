@@ -24,8 +24,7 @@ class ParkSeeder
       city: "Boston",
       state: "MA",
       country: "USA",
-      park_photo: EPCOT,
-      total_rating: 10
+      park_photo: EPCOT
     },
     {
       name: "Magic Kingdom",
@@ -33,8 +32,7 @@ class ParkSeeder
       city: "Boston",
       state: "MA",
       country: "USA",
-      park_photo: DISNEY,
-      total_rating: 10
+      park_photo: DISNEY
     },
     {
       name: "Universal Studios",
@@ -42,8 +40,7 @@ class ParkSeeder
       city: "Boston",
       state: "MA",
       country: "USA",
-      park_photo: UNIVERSAL_STUDIOS,
-      total_rating: 10
+      park_photo: UNIVERSAL_STUDIOS
     },
     {
       name: "Six Flags",
@@ -51,8 +48,7 @@ class ParkSeeder
       city: "Boston",
       state: "MA",
       country: "USA",
-      park_photo: SIX_FLAGS,
-      total_rating: 10
+      park_photo: SIX_FLAGS
     },
     {
       name: "Sea World",
@@ -60,8 +56,7 @@ class ParkSeeder
       city: "Boston",
       state: "MA",
       country: "USA",
-      park_photo: SEAWORLD,
-      total_rating: 10
+      park_photo: SEAWORLD
     }
   ]
 
