@@ -356,8 +356,7 @@ text-align: right;
 }
 
 .welcomeMessage {
-  color: white;
-  margin-right: 10px;
+  color: white;  
 }
 
 .signInPrompt {
@@ -367,4 +366,8 @@ text-align: right;
     color: #5AD0E8;
     font-weight: bold;
   }
+}
+
+.signOutSign{
+  text-align: right
 }
