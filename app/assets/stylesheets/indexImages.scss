@@ -142,6 +142,7 @@ a, a:hover {
   padding:0 5px 20px 5px;
   margin:20px 0 0 0;
 }
+
 h2 {
   background-color:#FD4360;
   font-family: "Montserrat";
@@ -305,6 +306,9 @@ text-align:center;
 .tagArea {
   list-style: none;
   margin: 10px 40px 15px;
+  li {
+    display: inline;
+  }
 }
 
 .tagItem {
@@ -316,6 +320,21 @@ text-align:center;
   text-align: center;
   margin: 5px 2px;
   display: inline;
+}
+
+.tagsContainer {
+  background-color: white;
+  border:1px solid #ccc;
+  padding:20px 5px;
+  margin:20px 0 0 0;
+  ul {
+    list-style: none;
+  }
+}
+
+.welcomeMessage {
+  color: white;
+  margin-right: 10px;
 }
 
 .votes-container {

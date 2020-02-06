@@ -16,6 +16,7 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+          <span class="welcomeMessage">Welcome back, <%= "#{current_user.first_name} #{current_user.last_name}" %>!</span>
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
         <%- else -%>
           <%= link_to 'Sign Up', new_user_registration_path %>
