@@ -297,3 +297,18 @@ text-align:center;
 .reviewSectionHeading {
   padding: 20px 40px 0 40px;
 }
+
+.votes-container {
+  width: 4rem;
+}
+
+.vote, .vote:focus {
+  color: #5AD0E8;
+  outline: none;
+  margin: 0 0.5rem;
+}
+
+.vote-selected, .vote-selected:focus {
+  color: #F24360;
+  outline: none;
+}
