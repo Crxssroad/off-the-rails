@@ -82,10 +82,13 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
       <hr/>
       <div className="reviewTitle">
         <div className="reviewHeading">
+        <div>
+        <span className="rating">Rating: {tileReview.rating}/5</span>
+        </div>
           <img src={review.user.profile_photo.url} />
           <h3>{tileReview.title}</h3>
           <span className="author">Author: {displayName}</span>
-          <span className="rating">Rating: {tileReview.rating}/5</span>
+
         </div>
       </div>
       <div className="reviewTileStyling">

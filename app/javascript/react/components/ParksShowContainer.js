@@ -113,7 +113,7 @@ const ParksShowContainer = (props) => {
       </div>
       <div className="parksShowStyling">
         <div className="reviewSectionHeading">
-          <h4>Reviews</h4>
+          <h4>{reviewList.length} Reviews</h4>
           {reviewList}
         </div>
         {errorList}
