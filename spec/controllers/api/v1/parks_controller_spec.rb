@@ -1,25 +1,31 @@
 require 'rails_helper'
 
+
 RSpec.describe Api::V1::ParksController, type: :controller do
   describe "GET#index" do
     let!(:park1) { Park.create(
       name: "Disney",
       description: "Happiest place on Earth!",
       city: "Boston",
-      country: "USA"
+      country: "USA",
+      park_photo: File.open(File.join(
+        Rails.root, '/public/images_seed/disney_land.jpg'
+      ))
     )}
     let!(:park2) { Park.create(
       name: "Six Flags",
       description: "Cool things happen!",
       city: "Boston",
-      country: "USA"
+      country: "USA",
+      park_photo: File.open(File.join(
+        Rails.root, '/public/images_seed/six_flags.jpg'
+        ))
     )}
 
     it "should return all the parks on the index page" do
       get :index
 
       returned_json = JSON.parse(response.body)
-
       expect(response.status).to eq(200)
       expect(response.content_type).to eq("application/json")
 
@@ -30,7 +36,6 @@ RSpec.describe Api::V1::ParksController, type: :controller do
 
       expect(returned_json["parks"][1]["name"]).to eq("Six Flags")
       expect(returned_json["parks"][1]["description"]).to eq("Cool things happen!")
-
     end
   end
 
@@ -39,7 +44,10 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       name: "Disney",
       description: "Happiest place on Earth!",
       city: "Boston",
-      country: "USA"
+      country: "USA",
+      park_photo: File.open(File.join(
+        Rails.root, '/public/images_seed/disney_land.jpg'
+      ))
     )}
 
     it "should return a single park on the show page" do
@@ -59,11 +67,17 @@ RSpec.describe Api::V1::ParksController, type: :controller do
 
   describe "POST#create" do
     context "Post of park was successful" do
+      setup do
+        @park_image = fixture_file_upload('/disney_land.jpg', 'image/jpg')
+      end
+
       let!(:park1) { { park: {
         name: "Splash Ablademy",
-        description: "Lorn Splorsh. Mork Wet.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ligula quis lectus auctor venenatis a sed est. Phasellus ac ultricies nisi, lacinia ornare lorem. Mauris justo risus, euismod et felis at, viverra lobortis velit.",
         city: "Boston",
-        country: "USA"
+        country: "USA",
+        park_photo: @park_image
+
       } } }
 
       it "should persist in the database" do
@@ -81,7 +95,7 @@ RSpec.describe Api::V1::ParksController, type: :controller do
         post :create, params: park1, format: :json
         returned_json = JSON.parse(response.body)
         expect(returned_json["park"]["name"]).to eq ("Splash Ablademy")
-        expect(returned_json["park"]["description"]).to eq ("Lorn Splorsh. Mork Wet.")
+        expect(returned_json["park"]["description"]).to eq ("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ligula quis lectus auctor venenatis a sed est. Phasellus ac ultricies nisi, lacinia ornare lorem. Mauris justo risus, euismod et felis at, viverra lobortis velit.")
         expect(returned_json["park"]["city"]).to eq("Boston")
         expect(returned_json["park"]["country"]).to eq("USA")
 

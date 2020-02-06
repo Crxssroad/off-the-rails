@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_184331) do
+ActiveRecord::Schema.define(version: 2020_02_05_205311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_184331) do
     t.string "city", null: false
     t.string "state"
     t.string "country", null: false
+    t.string "park_photo", default: "https://offtherailsdevelopment.s3.amazonaws.com/default_images/Best-coming-soon-pages.jpg", null: false
   end
 
   create_table "parks_tags", force: :cascade do |t|

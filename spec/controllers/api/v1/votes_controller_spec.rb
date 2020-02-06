@@ -5,7 +5,10 @@ RSpec.describe Api::V1::VotesController do
     name: "OTR Park",
     description: "This park is off the rails!",
     city: "Boston",
-    country: "USA"
+    country: "USA",
+    park_photo: File.open(File.join(
+      Rails.root, '/public/images_seed/disney_land.jpg'
+    ))
     )}
   let!(:user1) { FactoryBot.create(:user) }
   let!(:user2) { FactoryBot.create(:user) }

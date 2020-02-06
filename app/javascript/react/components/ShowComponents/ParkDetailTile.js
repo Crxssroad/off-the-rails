@@ -1,5 +1,5 @@
 import React from 'react'
-import TagTile from './TagTile'
+import TagTile from '../IndexComponents/TagTile'
 
 const ParkDetailTile = (props) => {
   let ratingDisplay = `Rating: ${props.averageRating}/5`
