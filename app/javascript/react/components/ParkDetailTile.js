@@ -1,4 +1,5 @@
 import React from 'react'
+import TagTile from './TagTile'
 
 const ParkDetailTile = (props) => {
   let image = 'https://images2.imgbox.com/7d/15/MhS0zZLD_o.jpg'
@@ -7,9 +8,10 @@ const ParkDetailTile = (props) => {
   if(props.tags) {
     tagList = props.tags.map(tag => {
       return(
-        <a href={`/tags/${tag.id}/parks`}>
-          <li key={tag.id} className="tagItem">{tag.name}</li>
-        </a>
+        <TagTile
+          key={tag.id}
+          tag={tag}
+        />
       )
     })
   }

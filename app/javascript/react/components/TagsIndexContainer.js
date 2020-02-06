@@ -30,12 +30,16 @@ const TagsIndexContainer = () => {
   })
 
   return (
-    <Fragment>
-      <h1>Tags</h1>
-      <ul>
-        {tagTiles}
-      </ul>
-    </Fragment>
+    <div className="newFormCenterContainer">
+      <div class="grid align-center">
+        <div class="cell small-6 tagsContainer">
+          <h2>Tags</h2>
+          <ul>
+            {tagTiles}
+          </ul>
+        </div>
+      </div>
+    </div>
   )
 }
 
