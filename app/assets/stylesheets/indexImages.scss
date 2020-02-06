@@ -241,7 +241,7 @@ h2 {
   padding:5px 5px 5px 40px;
   display:inline-block;
   width: 100%;
-  grid-template-columns: 33.3% 33.3% 33.3%
+  grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 .reviewHeading img {
@@ -269,7 +269,7 @@ text-align: right;
    line-height: .5;
    padding-bottom: 10px;
    display:inline-block;
-   width: 100%
+   width: 100%;
 }
 
 .errorSpace {
@@ -319,7 +319,8 @@ text-align: right;
   border-color: none;
   border-image: none;
   color: gray;
-  font-size: .9rem
+  font-size: .9rem;
+}
 
 .parkShowTags > h4 {
   margin: 15px 40px 0;
