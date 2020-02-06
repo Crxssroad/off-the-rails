@@ -115,7 +115,6 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
         />
       </div>
     }
-debugger
     if(deleted){
       display = "Review successfully deleted"
     }
