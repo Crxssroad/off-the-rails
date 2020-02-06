@@ -8,12 +8,16 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe("Review tile", () => {
   let wrapper
-  let review = {title:"This is a review", body:"My experience was positive", rating:"4"}
+  let user = {profile_photo: {url:"https://www.pictureurl.com"} }
+  let review = {title:"This is a review", body:"My experience was positive", rating:"4", user:user}
+
   beforeEach(() => {
     wrapper = mount(
       <ReviewTile
         review={review}
         displayName={"Bob"}
+        user={user}
+        signedInUser={null}
       />
     )
   })
@@ -32,6 +36,10 @@ describe("Review tile", () => {
 
   it('should include an author name', () => {
     expect(wrapper.find("span.author").text()).toEqual("Author: Bob")
+  })
+
+  it('should include a profile photo', () => {
+    expect(wrapper.find("img").props().src).toEqual("https://www.pictureurl.com")
   })
 
   it('should not show edit or delete buttons for non authenticated users.', () => {

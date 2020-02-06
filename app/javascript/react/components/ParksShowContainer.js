@@ -66,7 +66,6 @@ const ParksShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch ${error.message}`))
   }
-
   let errorList
 
   if (errors.length > 0) {
@@ -117,7 +116,7 @@ const ParksShowContainer = (props) => {
       </div>
       <div className="parksShowStyling">
         <div className="reviewSectionHeading">
-          <h3>Reviews</h3>
+          <h4>{reviewList.length} Reviews</h4>
           {reviewList}
         </div>
         {errorList}
