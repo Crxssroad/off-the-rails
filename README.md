@@ -5,10 +5,10 @@
 An "off the rails" Theme park review site.
 
 ## Authors
-  * Braden
-  * Gabriel
-  * Kennie
-  * Sarah
+  * Braden Lawrence
+  * Gabriel C. Encarnacion
+  * Kennie Boulin
+  * Sarah Fildes
 
 ## Dependancies
   * Ruby 2.6.5
