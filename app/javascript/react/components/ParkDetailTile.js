@@ -7,7 +7,9 @@ const ParkDetailTile = (props) => {
   if(props.tags) {
     tagList = props.tags.map(tag => {
       return(
-        <li key={tag.id} className="tagItem">{tag.name}</li>
+        <a href={`/tags/${tag.id}/parks`}>
+          <li key={tag.id} className="tagItem">{tag.name}</li>
+        </a>
       )
     })
   }
