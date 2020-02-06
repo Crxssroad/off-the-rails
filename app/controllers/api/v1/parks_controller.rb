@@ -37,6 +37,6 @@ class Api::V1::ParksController < ApplicationController
   private
 
   def park_params
-    params.require(:park).permit(:name, :description, :city, :state, :country)
+    params.require(:park).permit(:name, :description, :city, :state, :country, :park_photo)
   end
 end

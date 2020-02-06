@@ -5,7 +5,10 @@ RSpec.describe Api::V1::ReviewsController do
     name: "Disney",
     description: "Happiest place on Earth!",
     city: "Boston",
-    country: "USA"
+    country: "USA",
+    park_photo: File.open(File.join(
+      Rails.root, '/public/images_seed/disney_land.jpg'
+      ))
     )}
   let!(:user1) { FactoryBot.create(:user) }
   let!(:review1) {
@@ -25,7 +28,10 @@ RSpec.describe Api::V1::ReviewsController do
         name: "Disney",
         description: "Happiest place on Earth!",
         city: "Boston",
-        country: "USA"
+        country: "USA",
+        park_photo: File.open(File.join(
+          Rails.root, '/public/images_seed/disney_land.jpg'
+          ))
       )}
       let!(:user1) { FactoryBot.create(:user) }
       let!(:review1) {
@@ -66,7 +72,10 @@ RSpec.describe Api::V1::ReviewsController do
         name: "Universal",
         description: "Second happiest place on Earth!",
         city: "Boston",
-        country: "USA"
+        country: "USA",
+        park_photo: File.open(File.join(
+          Rails.root, '/public/images_seed/disney_land.jpg'
+        ))
       )}
       let!(:bad_review) {
         {
