@@ -3,12 +3,14 @@ import React, { useState, Fragment } from 'react'
 import ReviewForm from './ReviewForm'
 import ErrorList from './ErrorList'
 
-const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }) => {
+const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName, voteState }) => {
   let { title, body, rating, id } = review
   const [tileReview, setTileReview] = useState(review)
   const [editClicked, setEditClicked] = useState(false)
   const [errors, setErrors] = useState([])
   const [deleted, setDeleted] = useState(false)
+  const [vote, setVote] = useState(voteState)
+  const [totalVotes, setTotalVotes] = useState(review.vote_count)
 
   const onEditClick = event => {
     event.preventDefault()
@@ -68,7 +70,65 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
     .catch(error => console.error(`Error in fetch ${error.message}`))
   }
 
-  let updateDeleteButtons
+  const handleVote = event => {
+    event.preventDefault()
+    let url = `/api/v1/parks/${parkId}/reviews/${review.id}/votes`
+    let method = "POST"
+    let value = Number(event.target.value)
+
+    if(vote !== null) {
+      url = `/api/v1/parks/${parkId}/reviews/${review.id}/votes/${vote.id}`
+      method = "PATCH"
+    }
+
+    if (vote && value === vote.value) {
+      value = 0
+    }
+
+    let formPayload = {
+      value: value
+    }
+    fetch(url, {
+      credentials: 'same-origin',
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formPayload)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error(`${response.status} ${response.statusText}`)
+      }
+    })
+    .then(parsedBody => {
+      setVote(parsedBody.vote)
+      setTotalVotes(parsedBody.vote_count)
+    })
+    .catch(error => console.error(`Error in fetch ${error.message}`))
+  }
+
+  let updateDeleteButtons, voteButtons
+
+  if (signedInUser) {
+    let upvoteClass = "fas fa-thumbs-up vote"
+    let downvoteClass = "fas fa-thumbs-down vote"
+    if(vote) {
+      if(vote.value === 1) {
+        upvoteClass+= " vote-selected"
+      }
+      if(vote.value === -1) {
+        downvoteClass+= " vote-selected"
+      }
+    }
+    voteButtons = <div className="vote-buttons-container">
+      <button className={upvoteClass} onClick={handleVote} value="1"></button>
+      <button className={downvoteClass} onClick={handleVote} value="-1"></button>
+    </div>
+  }
 
   if (signedInUser && signedInUser.id === user.id || signedInUser && signedInUser.role === "admin") {
     updateDeleteButtons = <form>
@@ -88,12 +148,13 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName }
           <img src={review.user.profile_photo.url} />
           <h3>{tileReview.title}</h3>
           <span className="author">Author: {displayName}</span>
-
+          <span className="vote-count">{totalVotes} votes</span>
         </div>
       </div>
       <div className="reviewTileStyling">
         <p>{tileReview.body}</p>
           {updateDeleteButtons}
+          {voteButtons}
       </div>
     </div>
 
