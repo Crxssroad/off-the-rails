@@ -14,6 +14,7 @@ const ParkDetailTile = (props) => {
       )
     })
   }
+  
 
   if (props.averageRating === 0) {
     ratingDisplay = "Be the first to review"
@@ -25,7 +26,7 @@ let image = props.image ? props.image.url : null
       <div className="card">
         <img src={image}/>
         <div className="showPageRibbon">
-          {props.name}
+          <h3>{props.name}</h3>
         </div>
       </div>
       <div className="parkShowDescStyling">
