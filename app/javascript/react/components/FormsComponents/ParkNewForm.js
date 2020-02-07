@@ -16,6 +16,7 @@ const ParkNewForm = (props) => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [tags, setTags] = useState([])
   const [tagIds, setTagIds] = useState([])
+  const [uploadedPhoto, setUploadedPhoto] = useState([{}])
 
   useEffect(() => {
     fetch("/api/v1/tags")
@@ -57,6 +58,9 @@ const ParkNewForm = (props) => {
   }
 
   const handleFileUpload = (acceptedFiles) => {
+    setUploadedPhoto(acceptedFiles.map(file => Object.assign(file, {
+        preview: URL.createObjectURL(file)
+      })))
     setPark({
       ...park,
       park_photo: acceptedFiles[0]
@@ -170,6 +174,7 @@ const ParkNewForm = (props) => {
           <label>
             Park Photo<br/>
             </label>
+            <img src={uploadedPhoto[0].preview} />
           <Dropzone onDrop={handleFileUpload}>
              {({getRootProps, getInputProps}) => (
                <section>
