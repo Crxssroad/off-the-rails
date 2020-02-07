@@ -26,8 +26,13 @@ class Api::V1::ParksController < ApplicationController
 
   def create
     park = Park.new(park_params)
-
     if park.save
+      tag_ids_array = params[:park][:tag_ids] ? params[:park][:tag_ids].split(",") : nil
+      if tag_ids_array
+        tag_ids_array.each do |id|
+          ParksTag.create(park: park, tag_id: id)
+        end
+      end
       render json: park
     else
       render json: park.errors.full_messages
@@ -37,6 +42,6 @@ class Api::V1::ParksController < ApplicationController
   private
 
   def park_params
-    params.require(:park).permit(:name, :description, :city, :state, :country, :park_photo)
+    params.require(:park).permit(:name, :description, :city, :state, :country, :park_photo, :tag_ids)
   end
 end
