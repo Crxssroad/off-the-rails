@@ -173,6 +173,7 @@ h2 {
 
 .card img{
   max-height: 30vh;
+  max-height: 35vh;
   max-width:100%;
   object-fit:cover;
 }
@@ -191,12 +192,17 @@ h2 {
   position:absolute;
   height:80px;
   margin:25vh 0 0 -15px;
+  margin:30vh 0 0 -15px;
+}
+
+.showPageRibbon h3 {
   text-align: center;
   font-size: 48px;
   color:white;
   font-family: 'Bungee Inline';
   font-weight:bold;
   white-space:nowrap;
+  padding:5px 0 5px 0;
   text-overflow: ellipsis;
   overflow:hidden;
 }
@@ -232,7 +238,6 @@ h2 {
 
 .reviewTileStyling {
   padding:40px;
-  margin-top: -2rem
 }
 
 .reviewForm {
@@ -307,7 +312,7 @@ h2 {
 }
 
 .reviewSectionHeading {
-  padding: 20px 40px 0 40px;
+  padding: 5px 40px 15px 40px;
 }
 
 .reviewSectionHeading h4 {

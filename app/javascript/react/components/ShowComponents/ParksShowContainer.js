@@ -101,7 +101,8 @@ const ParksShowContainer = (props) => {
       Please <a href="/users/sign_in">Sign In</a> or <a href="/users/sign_up">Sign Up</a> to leave a review.
     </div>
 }
-
+  let reviewCounterDisplay = "Reviews"
+  if(reviewList.length > 0) reviewCounterDisplay = `${reviewList.length} Reviews`
   return(
     <div>
       <div className="parksShowStyling">
@@ -118,7 +119,7 @@ const ParksShowContainer = (props) => {
       </div>
       <div className="parksShowStyling">
         <div className="reviewSectionHeading">
-          <h4>{reviewList.length} Reviews</h4>
+          <h4>{reviewCounterDisplay}</h4>
           {reviewList}
         </div>
         {errorList}

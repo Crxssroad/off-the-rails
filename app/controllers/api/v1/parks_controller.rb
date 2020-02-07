@@ -26,11 +26,13 @@ class Api::V1::ParksController < ApplicationController
 
   def create
     park = Park.new(park_params)
+
     if park.save
       tag_ids_array = params[:park][:tag_ids] ? params[:park][:tag_ids].split(",") : nil
       if tag_ids_array
+        tag_ids_array.shift
         tag_ids_array.each do |id|
-          ParksTag.create(park: park, tag_id: id)
+          park.tags << Tag.find(id.to_i)
         end
       end
       render json: park

@@ -31,8 +31,8 @@ const TagsIndexContainer = () => {
 
   return (
     <div className="newFormCenterContainer">
-      <div class="grid align-center">
-        <div class="cell small-6 tagsContainer">
+      <div className="grid align-center">
+        <div className="cell small-6 tagsContainer">
           <h2>Tags</h2>
           <ul>
             {tagTiles}
