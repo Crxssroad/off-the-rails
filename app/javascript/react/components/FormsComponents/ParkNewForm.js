@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 
@@ -14,7 +14,41 @@ const ParkNewForm = (props) => {
 
   const [errors, setErrors] = useState([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [tags, setTags] = useState([])
+  const [tagIds, setTagIds] = useState([])
 
+  useEffect(() => {
+    fetch("/api/v1/tags")
+      .then(response => {
+        if(response.ok) {
+          return response.json()
+        } else {
+          throw new Error(`${response.status} ${response.statusText}`)
+        }
+      })
+      .then(parsedBody => {
+        setTags(parsedBody.tags)
+      })
+      .catch(error => console.error(`Error in fetch ${error.message}`))
+  }, [])
+
+  const handleCheckChange = event => {
+    const checkedId = event.currentTarget.value
+    if(tagIds.includes(checkedId)) {
+      setTagIds(tagIds.filter(id => checkedId !== id))
+    } else {
+      setTagIds([...tagIds, checkedId])
+    }
+  }
+
+  const tagCheckBoxes = tags.map(tag => {
+    return(
+      <div className="tagStyle" key={tag.id}>
+        <input onChange={handleCheckChange} type="checkbox" value={tag.id}/>
+        <label htmlFor={tag.name}>{tag.name}</label>
+      </div>
+    )
+  })
   const handleInput = (event) => {
     setPark({
       ...park,
@@ -44,6 +78,7 @@ const ParkNewForm = (props) => {
     body.append("park[city]", park.city)
     body.append("park[state]", park.state)
     body.append("park[country]", park.country)
+    body.append("park[tag_ids]", tagIds)
 
     fetch("/api/v1/parks", {
       method: "POST",
@@ -73,10 +108,7 @@ const ParkNewForm = (props) => {
     if(shouldRedirect) {
       return <Redirect to="/parks" />
     }
-    const btn = {
-           name: 'Foo Bar',
-           handler: () => new Promise((resolve) => setTimeout(() => resolve(), 3000))
-       };
+
     return(
       <div className="grid align-center">
         <div className="cell small-6 formContainer">
@@ -148,7 +180,9 @@ const ParkNewForm = (props) => {
                </section>
              )}
            </Dropzone>
-
+           <div className="new-park-tags-container">
+             {tagCheckBoxes}
+           </div>
               <input
                 className="button"
                 type="submit"
