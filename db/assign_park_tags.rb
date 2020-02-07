@@ -4,9 +4,10 @@ class AssignParkTags
   end
 
   def seed!(max)
+    all_tags = Tag.all
     @parks.each do |park|
       used_ids = park.tags.map {|tag| tag.id}
-      available_ids = Tag.all.map {|tag| tag.id} - used_ids
+      available_ids = all_tags.map {|tag| tag.id} - used_ids
       if park.tags.count < max
         ParksTag.create({
           park_id: park.id,

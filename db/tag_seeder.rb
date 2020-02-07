@@ -1,16 +1,12 @@
 class TagSeeder
   TAGS = [
     { name: "water" },
-    { name: "fire" },
-    { name: "earth" },
-    { name: "air" },
     { name: "halloween" },
     { name: "coaster" },
     { name: "high adventure" },
     { name: "family friendly" },
     { name: "winter" },
     { name: "skate" },
-    { name: "dark" },
     { name: "educational" },
     { name: "regional" },
     { name: "rodeo" },

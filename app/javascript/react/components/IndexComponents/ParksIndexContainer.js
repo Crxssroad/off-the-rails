@@ -45,7 +45,11 @@ const ParksIndexContainer = (props) => {
         />
     )
   })
-  let pageHeader = tag ? `${tag.name} Parks` : ""
+  let pageHeader = ""
+  if(tag) {
+    let tagTitle = tag.name.charAt(0).toUpperCase() + tag.name.substring(1)
+    pageHeader = `${tagTitle} Parks`
+  }
   let newParkButtonDisplay = isAdmin ? <Link className="button" to="/parks/new">Add a New Park</Link> : null
   return(
     <div className="grid-container full parkTileImageContainer">
