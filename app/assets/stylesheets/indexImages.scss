@@ -392,3 +392,34 @@ text-align: right;
   margin: 1rem 0;
   width: fit-content;
 }
+
+.new-park-tags-container {
+  display: block;
+  text-align: center;
+  div {
+    display: inline-block;
+    background-color: #F24360;
+    width: fit-content;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0.2rem;
+  }
+  label {
+    color: white;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  input {
+    box-shadow: none;
+    margin-bottom: 0;
+    width: auto;
+    width: fit-content;
+    padding: 0.5rem;
+    vertical-align: middle;
+    display: inline;
+  }
+  checkbox {
+    margin-bottom: 0;
+    height: auto;
+  }
+}
