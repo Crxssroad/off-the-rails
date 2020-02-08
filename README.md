@@ -10,7 +10,7 @@ An "off the rails" Theme park review site.
   * Kennie Boulin
   * Sarah Fildes
 
-## Dependancies
+## Dependencies
   * Ruby 2.6.5
   * Ruby-On-Rails 5.2.3
   * React 16.8.0
