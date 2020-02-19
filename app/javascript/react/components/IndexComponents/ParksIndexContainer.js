@@ -42,7 +42,7 @@ const ParksIndexContainer = (props) => {
         state={park.state}
         country={park.country}
         image={park.park_photo.url}
-        />
+      />
     )
   })
   let pageHeader = ""

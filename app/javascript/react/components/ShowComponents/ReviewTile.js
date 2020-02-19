@@ -133,18 +133,18 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName, 
   if (signedInUser && signedInUser.id === user.id || signedInUser && signedInUser.role === "admin") {
     updateDeleteButtons = <form>
       <input className="editButton" onClick={onEditClick} type="button" value="Edit" />•
-      <input  className="deleteButton" onClick={deleteReview} type="button" value="Delete" />
-    </form>
-  }
+        <input  className="deleteButton" onClick={deleteReview} type="button" value="Delete" />
+      </form>
+    }
 
-  let display =
+    let display =
     <div>
       <hr/>
       <div className="reviewTitle">
         <div className="reviewHeading">
-        <div>
-        <span className="rating">Rating: {tileReview.rating}/5</span>
-        </div>
+          <div>
+            <span className="rating">Rating: {tileReview.rating}/5</span>
+          </div>
           <img src={review.user.profile_photo.url} />
           <h3>{tileReview.title}</h3>
           <span className="author">Author: {displayName}</span>
@@ -153,8 +153,8 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName, 
       </div>
       <div className="reviewTileStyling">
         <p>{tileReview.body}</p>
-          {updateDeleteButtons}
-          {voteButtons}
+        {updateDeleteButtons}
+        {voteButtons}
       </div>
     </div>
 
@@ -173,17 +173,17 @@ const ReviewTile = ({ review, user, signedInUser, parkId, setPark, displayName, 
           editReview={tileReview}
           saveReview={saveReview}
           cancelClicked={cancelClicked}
-        />
+          />
       </div>
     }
     if(deleted){
       display = "Review successfully deleted"
     }
-  return(
-    <Fragment>
-      {display}
-    </Fragment>
-  )
-}
+    return(
+      <div className="formContainer">
+        {display}
+      </div>
+    )
+  }
 
-export default ReviewTile
+  export default ReviewTile
